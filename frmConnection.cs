@@ -21,7 +21,7 @@ namespace ProjetII_B56 {
 
             if(user.Any()) {
                 this.Hide();
-                (new frmMenuPrincipal()).Show();
+                (new frmMenuPrincipal(user.First().NoTypeEmploye)).Show();
             } else {
                 lblStatusConnection.Text = "Connection échoué";
             }

@@ -139,12 +139,14 @@
             // 
             // btnGestionEmploye
             // 
+            this.btnGestionEmploye.Enabled = false;
             this.btnGestionEmploye.Location = new System.Drawing.Point(268, 141);
             this.btnGestionEmploye.Name = "btnGestionEmploye";
             this.btnGestionEmploye.Size = new System.Drawing.Size(129, 29);
             this.btnGestionEmploye.TabIndex = 11;
             this.btnGestionEmploye.Text = "Gestion des employés";
             this.btnGestionEmploye.UseVisualStyleBackColor = true;
+            this.btnGestionEmploye.Visible = false;
             // 
             // frmMenuPrincipal
             // 
@@ -166,6 +168,7 @@
             this.Name = "frmMenuPrincipal";
             this.Text = "frmMenuPrincipal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuPrincipal_FormClosing);
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

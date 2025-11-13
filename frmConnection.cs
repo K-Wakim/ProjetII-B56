@@ -21,7 +21,8 @@ namespace ProjetII_B56 {
 
             if(user.Any()) {
                 this.Hide();
-                (new frmMenuPrincipal()).Show();
+                (new frmMenuPrincipal()).ShowDialog();
+                this.Show();
             } else {
                 lblStatusConnection.Text = "Connection échoué";
             }
@@ -33,8 +34,7 @@ namespace ProjetII_B56 {
 
         }
 
-        private void btnQuitter_Click(object sender, EventArgs e)
-        {
+        private void btnQuitter_Click( object sender, EventArgs e ) {
             Application.Exit();
         }
     }

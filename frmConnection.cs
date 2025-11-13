@@ -16,11 +16,14 @@ namespace ProjetII_B56 {
 
         private void btnConnexion_Click( object sender, EventArgs e ) {
             var user = from users in this.bDB56Pr211DataSet.Employes
-                       where users.Nom == txtUserName.Text && users.MotDePasse == txtMotPasse.Text
+                       where users.No.ToString() == txtUserName.Text && users.MotDePasse == txtMotPasse.Text
                        select users;
 
             if(user.Any()) {
-
+                this.Hide();
+                (new frmMenuPrincipal()).Show();
+            } else {
+                lblStatusConnection.Text = "Connection échoué";
             }
         }
 

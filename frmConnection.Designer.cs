@@ -33,6 +33,7 @@
             this.employesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.EmployesTableAdapter();
             this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
+            this.lblStatusConnection = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             this.txtMotPasse.Location = new System.Drawing.Point(166, 55);
             this.txtMotPasse.Name = "txtMotPasse";
+            this.txtMotPasse.PasswordChar = '*';
             this.txtMotPasse.Size = new System.Drawing.Size(130, 20);
             this.txtMotPasse.TabIndex = 3;
             // 
@@ -113,11 +115,22 @@
             this.tableAdapterManager.TypesEmployeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // lblStatusConnection
+            // 
+            this.lblStatusConnection.AutoSize = true;
+            this.lblStatusConnection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusConnection.ForeColor = System.Drawing.Color.Red;
+            this.lblStatusConnection.Location = new System.Drawing.Point(86, 126);
+            this.lblStatusConnection.Name = "lblStatusConnection";
+            this.lblStatusConnection.Size = new System.Drawing.Size(0, 16);
+            this.lblStatusConnection.TabIndex = 5;
+            // 
             // frmConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 151);
+            this.Controls.Add(this.lblStatusConnection);
             this.Controls.Add(this.btnConnexion);
             this.Controls.Add(this.txtMotPasse);
             this.Controls.Add(this.lblMotPasse);
@@ -144,6 +157,7 @@
         private System.Windows.Forms.BindingSource employesBindingSource;
         private BDB56Pr211DataSetTableAdapters.EmployesTableAdapter employesTableAdapter;
         private BDB56Pr211DataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.Label lblStatusConnection;
     }
 }
 

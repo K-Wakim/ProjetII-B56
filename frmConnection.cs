@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.
 
 namespace ProjetII_B56 {
     public partial class frmConnection : Form {

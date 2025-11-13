@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|c:\\users\\k.wakim\\onedrive - cegep gerald-godin\\420-b56-gg\\projets\\projet02\\projetii-b56\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|c:\\users\\k.wakim\\onedrive - cegep gerald-godin\\420-b56-gg\\projets\\projet02\\projetii-b56\\frmconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|solutionrelative:frmconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|c:\\users\\k.wakim\\onedrive - cegep gerald-godin\\420-b56-gg\\projets\\projet02\\projetii-b56\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|c:\\users\\k.wakim\\onedrive - cegep gerald-godin\\420-b56-gg\\projets\\projet02\\projetii-b56\\frmconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{762DC4DF-DFEC-4423-99FF-DC42E49F2394}|ProjetII-B56.csproj|solutionrelative:frmconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,12 +34,38 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T18:12:01.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "Title": "frmConnection.cs",
+              "DocumentMoniker": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\frmConnection.cs",
+              "RelativeDocumentMoniker": "frmConnection.cs",
+              "ToolTip": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\frmConnection.cs",
+              "RelativeToolTip": "frmConnection.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T17:54:06.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmConnection.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\frmConnection.cs",
+              "RelativeDocumentMoniker": "frmConnection.cs",
+              "ToolTip": "C:\\Users\\k.wakim\\OneDrive - Cegep Gerald-Godin\\420-B56-GG\\Projets\\Projet02\\ProjetII-B56\\frmConnection.cs [Design]",
+              "RelativeToolTip": "frmConnection.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T17:34:35.731Z",
               "EditorCaption": " [Design]"

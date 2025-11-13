@@ -32,5 +32,10 @@ namespace ProjetII_B56 {
             this.employesTableAdapter.Fill( this.bDB56Pr211DataSet.Employes );
 
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

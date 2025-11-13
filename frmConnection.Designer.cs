@@ -34,6 +34,7 @@
             this.employesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.EmployesTableAdapter();
             this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
             this.lblStatusConnection = new System.Windows.Forms.Label();
+            this.btnQuitter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +77,7 @@
             // btnConnexion
             // 
             this.btnConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnexion.Location = new System.Drawing.Point(66, 97);
+            this.btnConnexion.Location = new System.Drawing.Point(65, 88);
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(171, 22);
             this.btnConnexion.TabIndex = 4;
@@ -125,11 +126,22 @@
             this.lblStatusConnection.Size = new System.Drawing.Size(0, 16);
             this.lblStatusConnection.TabIndex = 5;
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(5, 116);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(75, 23);
+            this.btnQuitter.TabIndex = 6;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // frmConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 151);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblStatusConnection);
             this.Controls.Add(this.btnConnexion);
             this.Controls.Add(this.txtMotPasse);
@@ -158,6 +170,7 @@
         private BDB56Pr211DataSetTableAdapters.EmployesTableAdapter employesTableAdapter;
         private BDB56Pr211DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Label lblStatusConnection;
+        private System.Windows.Forms.Button btnQuitter;
     }
 }
 

@@ -127,6 +127,7 @@
             this.btnReabonnement.TabIndex = 9;
             this.btnReabonnement.Text = "Réabonnement";
             this.btnReabonnement.UseVisualStyleBackColor = true;
+            this.btnReabonnement.Click += new System.EventHandler(this.btnReabonnement_Click);
             // 
             // btnAbonnement
             // 
@@ -136,6 +137,7 @@
             this.btnAbonnement.TabIndex = 10;
             this.btnAbonnement.Text = "Abonnement";
             this.btnAbonnement.UseVisualStyleBackColor = true;
+            this.btnAbonnement.Click += new System.EventHandler(this.btnAbonnement_Click);
             // 
             // btnGestionEmploye
             // 
@@ -145,6 +147,7 @@
             this.btnGestionEmploye.TabIndex = 11;
             this.btnGestionEmploye.Text = "Gestion des employés";
             this.btnGestionEmploye.UseVisualStyleBackColor = true;
+            this.btnGestionEmploye.Click += new System.EventHandler(this.btnGestionEmploye_Click);
             // 
             // frmMenuPrincipal
             // 

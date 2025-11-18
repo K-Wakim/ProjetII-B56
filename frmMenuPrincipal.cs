@@ -17,5 +17,23 @@ namespace ProjetII_B56 {
         private void frmMenuPrincipal_FormClosing( object sender, FormClosingEventArgs e ) {
             Application.Exit();
         }
+
+        private void btnGestionEmploye_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAbonnement_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmGestionAbonnement()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnReabonnement_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmGestionReabonnement()).ShowDialog();
+            this.Show();
+        }
     }
 }

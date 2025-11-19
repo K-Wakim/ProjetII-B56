@@ -1,6 +1,6 @@
 ﻿namespace ProjetII_B56
 {
-    partial class frmGestionAbonnement
+    partial class frmGestionEmployes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.bDB56Pr211DataSet = new ProjetII_B56.BDB56Pr211DataSet();
-            this.abonnementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.abonnementsTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.AbonnementsTableAdapter();
+            this.employesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.EmployesTableAdapter();
             this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
-            this.reabonnementsTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.ReabonnementsTableAdapter();
-            this.abonnementsDataGridView = new System.Windows.Forms.DataGridView();
+            this.employesDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,14 +50,15 @@
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAjouterAbonne = new System.Windows.Forms.Button();
-            this.reabonnementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAjoutEmploye = new System.Windows.Forms.Button();
+            this.btnModifierEmploye = new System.Windows.Forms.Button();
+            this.btnSupprimerEmploye = new System.Windows.Forms.Button();
+            this.btnRetour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abonnementsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reabonnementsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bDB56Pr211DataSet
@@ -66,46 +66,42 @@
             this.bDB56Pr211DataSet.DataSetName = "BDB56Pr211DataSet";
             this.bDB56Pr211DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // abonnementsBindingSource
+            // employesBindingSource
             // 
-            this.abonnementsBindingSource.DataMember = "Abonnements";
-            this.abonnementsBindingSource.DataSource = this.bDB56Pr211DataSet;
+            this.employesBindingSource.DataMember = "Employes";
+            this.employesBindingSource.DataSource = this.bDB56Pr211DataSet;
             // 
-            // abonnementsTableAdapter
+            // employesTableAdapter
             // 
-            this.abonnementsTableAdapter.ClearBeforeFill = true;
+            this.employesTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.AbonnementsTableAdapter = this.abonnementsTableAdapter;
+            this.tableAdapterManager.AbonnementsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DependantsTableAdapter = null;
             this.tableAdapterManager.DepensesTableAdapter = null;
-            this.tableAdapterManager.EmployesTableAdapter = null;
+            this.tableAdapterManager.EmployesTableAdapter = this.employesTableAdapter;
             this.tableAdapterManager.PartiesJoueesTableAdapter = null;
             this.tableAdapterManager.PrixDepensesAbonnementsTableAdapter = null;
             this.tableAdapterManager.ProvincesTableAdapter = null;
-            this.tableAdapterManager.ReabonnementsTableAdapter = this.reabonnementsTableAdapter;
+            this.tableAdapterManager.ReabonnementsTableAdapter = null;
             this.tableAdapterManager.ServicesTableAdapter = null;
             this.tableAdapterManager.TerrainsTableAdapter = null;
             this.tableAdapterManager.TypesAbonnementTableAdapter = null;
             this.tableAdapterManager.TypesEmployeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // reabonnementsTableAdapter
+            // employesDataGridView
             // 
-            this.reabonnementsTableAdapter.ClearBeforeFill = true;
-            // 
-            // abonnementsDataGridView
-            // 
-            this.abonnementsDataGridView.AllowUserToAddRows = false;
-            this.abonnementsDataGridView.AllowUserToDeleteRows = false;
-            this.abonnementsDataGridView.AllowUserToResizeColumns = false;
-            this.abonnementsDataGridView.AllowUserToResizeRows = false;
-            this.abonnementsDataGridView.AutoGenerateColumns = false;
-            this.abonnementsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.abonnementsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.abonnementsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employesDataGridView.AllowUserToAddRows = false;
+            this.employesDataGridView.AllowUserToDeleteRows = false;
+            this.employesDataGridView.AllowUserToResizeColumns = false;
+            this.employesDataGridView.AllowUserToResizeRows = false;
+            this.employesDataGridView.AutoGenerateColumns = false;
+            this.employesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.employesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -121,24 +117,25 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16});
-            this.abonnementsDataGridView.DataSource = this.abonnementsBindingSource;
-            this.abonnementsDataGridView.Location = new System.Drawing.Point(17, 36);
-            this.abonnementsDataGridView.Name = "abonnementsDataGridView";
-            this.abonnementsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.abonnementsDataGridView.Size = new System.Drawing.Size(1420, 220);
-            this.abonnementsDataGridView.TabIndex = 1;
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17});
+            this.employesDataGridView.DataSource = this.employesBindingSource;
+            this.employesDataGridView.Location = new System.Drawing.Point(16, 32);
+            this.employesDataGridView.Name = "employesDataGridView";
+            this.employesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.employesDataGridView.Size = new System.Drawing.Size(1340, 364);
+            this.employesDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "No";
+            this.dataGridViewTextBoxColumn1.HeaderText = "No";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "DateAbonnement";
-            this.dataGridViewTextBoxColumn2.HeaderText = "DateAbonnement";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "MotDePasse";
+            this.dataGridViewTextBoxColumn2.HeaderText = "MotDePasse";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // dataGridViewTextBoxColumn3
@@ -161,8 +158,8 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "DateNaissance";
-            this.dataGridViewTextBoxColumn6.HeaderText = "DateNaissance";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Age";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Age";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // dataGridViewTextBoxColumn7
@@ -215,67 +212,93 @@
             // 
             // dataGridViewTextBoxColumn15
             // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "NoTypeAbonnement";
-            this.dataGridViewTextBoxColumn15.HeaderText = "NoTypeAbonnement";
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "SalaireHoraire";
+            this.dataGridViewTextBoxColumn15.HeaderText = "SalaireHoraire";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             // 
             // dataGridViewTextBoxColumn16
             // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Remarque";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Remarque";
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "NoTypeEmploye";
+            this.dataGridViewTextBoxColumn16.HeaderText = "NoTypeEmploye";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Remarque";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Remarque";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 20);
+            this.label1.Size = new System.Drawing.Size(142, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Liste d\'abonnement :";
+            this.label1.Text = "Liste d\'employes";
             // 
-            // btnAjouterAbonne
+            // btnAjoutEmploye
             // 
-            this.btnAjouterAbonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjouterAbonne.Location = new System.Drawing.Point(17, 262);
-            this.btnAjouterAbonne.Name = "btnAjouterAbonne";
-            this.btnAjouterAbonne.Size = new System.Drawing.Size(161, 29);
-            this.btnAjouterAbonne.TabIndex = 4;
-            this.btnAjouterAbonne.Text = "Ajouter une abonné";
-            this.btnAjouterAbonne.UseVisualStyleBackColor = true;
+            this.btnAjoutEmploye.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjoutEmploye.Location = new System.Drawing.Point(16, 402);
+            this.btnAjoutEmploye.Name = "btnAjoutEmploye";
+            this.btnAjoutEmploye.Size = new System.Drawing.Size(168, 27);
+            this.btnAjoutEmploye.TabIndex = 3;
+            this.btnAjoutEmploye.Text = "Ajouter un employe";
+            this.btnAjoutEmploye.UseVisualStyleBackColor = true;
+            this.btnAjoutEmploye.Click += new System.EventHandler(this.btnAjoutEmploye_Click);
             // 
-            // reabonnementsBindingSource
+            // btnModifierEmploye
             // 
-            this.reabonnementsBindingSource.DataMember = "FK__Reabonnem__IdAbo__59FA5E80";
-            this.reabonnementsBindingSource.DataSource = this.abonnementsBindingSource;
+            this.btnModifierEmploye.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModifierEmploye.Location = new System.Drawing.Point(190, 402);
+            this.btnModifierEmploye.Name = "btnModifierEmploye";
+            this.btnModifierEmploye.Size = new System.Drawing.Size(168, 27);
+            this.btnModifierEmploye.TabIndex = 4;
+            this.btnModifierEmploye.Text = "Modifier un employe";
+            this.btnModifierEmploye.UseVisualStyleBackColor = true;
+            this.btnModifierEmploye.Click += new System.EventHandler(this.btnModifierEmploye_Click);
             // 
-            // button1
+            // btnSupprimerEmploye
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1208, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(229, 26);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Retour au menu principale";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSupprimerEmploye.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSupprimerEmploye.Location = new System.Drawing.Point(364, 402);
+            this.btnSupprimerEmploye.Name = "btnSupprimerEmploye";
+            this.btnSupprimerEmploye.Size = new System.Drawing.Size(168, 27);
+            this.btnSupprimerEmploye.TabIndex = 5;
+            this.btnSupprimerEmploye.Text = "Supprimer un employe";
+            this.btnSupprimerEmploye.UseVisualStyleBackColor = true;
+            this.btnSupprimerEmploye.Click += new System.EventHandler(this.btnSupprimerEmploye_Click);
             // 
-            // frmGestionAbonnement
+            // btnRetour
+            // 
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.Location = new System.Drawing.Point(1127, 402);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(229, 26);
+            this.btnRetour.TabIndex = 15;
+            this.btnRetour.Text = "Retour au menu principale";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // frmGestionEmployes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1449, 306);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnAjouterAbonne);
+            this.ClientSize = new System.Drawing.Size(1364, 440);
+            this.Controls.Add(this.btnRetour);
+            this.Controls.Add(this.btnSupprimerEmploye);
+            this.Controls.Add(this.btnModifierEmploye);
+            this.Controls.Add(this.btnAjoutEmploye);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.abonnementsDataGridView);
-            this.Name = "frmGestionAbonnement";
-            this.Text = "Gestion d\'abonnement";
-            this.Load += new System.EventHandler(this.frmGestionAbonnement_Load);
+            this.Controls.Add(this.employesDataGridView);
+            this.Name = "frmGestionEmployes";
+            this.Text = "Gestion d\'employes";
+            this.Load += new System.EventHandler(this.frmGestionEmployes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.abonnementsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reabonnementsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,10 +307,10 @@
         #endregion
 
         private BDB56Pr211DataSet bDB56Pr211DataSet;
-        private System.Windows.Forms.BindingSource abonnementsBindingSource;
-        private BDB56Pr211DataSetTableAdapters.AbonnementsTableAdapter abonnementsTableAdapter;
+        private System.Windows.Forms.BindingSource employesBindingSource;
+        private BDB56Pr211DataSetTableAdapters.EmployesTableAdapter employesTableAdapter;
         private BDB56Pr211DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView abonnementsDataGridView;
+        private System.Windows.Forms.DataGridView employesDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -304,10 +327,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.Label label1;
-        private BDB56Pr211DataSetTableAdapters.ReabonnementsTableAdapter reabonnementsTableAdapter;
-        private System.Windows.Forms.BindingSource reabonnementsBindingSource;
-        private System.Windows.Forms.Button btnAjouterAbonne;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAjoutEmploye;
+        private System.Windows.Forms.Button btnModifierEmploye;
+        private System.Windows.Forms.Button btnSupprimerEmploye;
+        private System.Windows.Forms.Button btnRetour;
     }
 }

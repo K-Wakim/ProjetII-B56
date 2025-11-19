@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDB56Pr211DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmAjouterEmploye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjouterEmploye.Designer.cs">
+      <DependentUpon>frmAjouterEmploye.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConnection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,12 @@
     </Compile>
     <Compile Include="frmGestionAbonnement.Designer.cs">
       <DependentUpon>frmGestionAbonnement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestionEmployes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionEmployes.Designer.cs">
+      <DependentUpon>frmGestionEmployes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestionReabonnement.cs">
       <SubType>Form</SubType>
@@ -75,19 +87,52 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMiseAJourAbonnes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMiseAJourAbonnes.Designer.cs">
+      <DependentUpon>frmMiseAJourAbonnes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModifieEmploye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifieEmploye.Designer.cs">
+      <DependentUpon>frmModifieEmploye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModifierPrixEtDepense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifierPrixEtDepense.Designer.cs">
+      <DependentUpon>frmModifierPrixEtDepense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAjouterEmploye.resx">
+      <DependentUpon>frmAjouterEmploye.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConnection.resx">
       <DependentUpon>frmConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionAbonnement.resx">
       <DependentUpon>frmGestionAbonnement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionEmployes.resx">
+      <DependentUpon>frmGestionEmployes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestionReabonnement.resx">
       <DependentUpon>frmGestionReabonnement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMiseAJourAbonnes.resx">
+      <DependentUpon>frmMiseAJourAbonnes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifieEmploye.resx">
+      <DependentUpon>frmModifieEmploye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifierPrixEtDepense.resx">
+      <DependentUpon>frmModifierPrixEtDepense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

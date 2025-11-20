@@ -29,9 +29,11 @@ namespace ProjetII_B56 {
             if (user != null)
             {
                 this.Hide();
-                (new frmMenuPrincipal()).ShowDialog();
+                frmMenuPrincipal menu = new frmMenuPrincipal(user); // <-- Passer l'objet user
+                menu.ShowDialog();
                 this.Show();
-            } else {
+            }
+            else {
                 lblStatusConnection.Text = "Connection échoué";
             }
         }

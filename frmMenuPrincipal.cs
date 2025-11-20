@@ -11,12 +11,17 @@ using System.Windows.Forms;
 namespace ProjetII_B56 {
     public partial class frmMenuPrincipal : Form {
 
-        bool _Deconnect = false;
-        public frmMenuPrincipal() {
+
+            bool _Deconnect = false;
+
+        private BDB56Pr211DataSet.EmployesRow user;
+
+
+        public frmMenuPrincipal(BDB56Pr211DataSet.EmployesRow user)
+        {
             InitializeComponent();
-            utilisateur = user;
+            this.user = user;
         }
-         
 
         private void btnDeconnection_Click( object sender, EventArgs e ) {
             _Deconnect = true;
@@ -100,7 +105,7 @@ namespace ProjetII_B56 {
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            if (utilisateur.NoTypeEmploye != 1 && utilisateur.NoTypeEmploye != 2)
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 2)
             {
                 btnGestionEmploye.Enabled = false; // Désactive le bouton
                 btnGestionEmploye.BackColor = Color.LightGray; // Optionnel : griser le bouton
@@ -108,20 +113,20 @@ namespace ProjetII_B56 {
             }
         }
 
-        private void btnDeconnection_Click(object sender, EventArgs e)
+/*        private void btnDeconnection_Click(object sender, EventArgs e)
         {
             this.Close(); // Ferme cette fenêtre
 
             // Ouvre la fenêtre de connexion
             var frmConn = new frmConnection();
             frmConn.Show();
-        }
+        }*/
 
 
-        private void btnSortie_Click(object sender, EventArgs e)
+/*        private void btnSortie_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e) { Application.Exit(); }
+        }*/
+        // private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e) { Application.Exit(); }
     }
 }

@@ -137,7 +137,8 @@ namespace ProjetII_B56
                     row.Remarque = txtRemarque.Text.Trim();
 
                 // Sauvegarder les modifications
-                empTA.Update(bDB56Pr211DataSet.Employes);
+                empTA.Update(employeRow);
+
 
                 MessageBox.Show("Employé modifié avec succès !");
                 this.Close();

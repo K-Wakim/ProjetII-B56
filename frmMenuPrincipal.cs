@@ -14,7 +14,9 @@ namespace ProjetII_B56 {
         bool _Deconnect = false;
         public frmMenuPrincipal() {
             InitializeComponent();
+            utilisateur = user;
         }
+         
 
         private void btnDeconnection_Click( object sender, EventArgs e ) {
             _Deconnect = true;
@@ -95,5 +97,31 @@ namespace ProjetII_B56 {
             (new frmRapports()).ShowDialog();
             this.Show();
         }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            if (utilisateur.NoTypeEmploye != 1 && utilisateur.NoTypeEmploye != 2)
+            {
+                btnGestionEmploye.Enabled = false; // Désactive le bouton
+                btnGestionEmploye.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnGestionEmploye.Text += " (Accès restreint)";
+            }
+        }
+
+        private void btnDeconnection_Click(object sender, EventArgs e)
+        {
+            this.Close(); // Ferme cette fenêtre
+
+            // Ouvre la fenêtre de connexion
+            var frmConn = new frmConnection();
+            frmConn.Show();
+        }
+
+
+        private void btnSortie_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e) { Application.Exit(); }
     }
 }

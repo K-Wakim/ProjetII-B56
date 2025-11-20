@@ -177,6 +177,7 @@
             this.Name = "frmMenuPrincipal";
             this.Text = "frmMenuPrincipal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuPrincipal_FormClosing);
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

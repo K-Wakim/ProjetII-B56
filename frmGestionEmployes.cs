@@ -41,10 +41,22 @@ namespace ProjetII_B56
 
         private void btnModifierEmploye_Click(object sender, EventArgs e)
         {
+            if (employesBindingSource.Current == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un employé.");
+                return;
+            }
+
+            DataRowView drv = (DataRowView)employesBindingSource.Current;
+            var row = (BDB56Pr211DataSet.EmployesRow)((DataRowView)drv).Row;
+
             this.Hide();
-            (new frmModifieEmploye()).ShowDialog();
+            var frm = new frmModifieEmploye(row);
+            frm.ShowDialog();
             this.Show();
         }
+
+
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
@@ -53,14 +65,45 @@ namespace ProjetII_B56
 
         private void btnSupprimerEmploye_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Voulez-vous supprimer cet employe?", "Supprimation d'un employe", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (employesBindingSource.Current == null)
             {
-                MessageBox.Show("Cet fonction n'est pas implementer!");
+                MessageBox.Show("Veuillez sélectionner un employé à supprimer.");
+                return;
             }
-            else if (dialogResult == DialogResult.No)
+
+            // Obtenir la ligne sélectionnée
+            DataRowView drv = (DataRowView)employesBindingSource.Current;
+            int noEmploye = (int)drv["No"];
+            string nom = drv["Nom"].ToString();
+            string prenom = drv["Prenom"].ToString();
+
+            // Confirmation
+            DialogResult rep = MessageBox.Show(
+                $"Voulez-vous vraiment supprimer l'employé :\n{prenom} {nom} (No {noEmploye}) ?",
+                "Confirmation de suppression",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (rep == DialogResult.Yes)
             {
-                MessageBox.Show("Supprimation annuler!");
+                try
+                {
+                    // Supprimer dans le BindingSource
+                    employesBindingSource.RemoveCurrent();
+
+                    // Mettre à jour la BD
+                    employesTableAdapter.Update(bDB56Pr211DataSet.Employes);
+
+                    MessageBox.Show("Employé supprimé avec succès !");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la suppression : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Suppression annulée.");
             }
         }
     }

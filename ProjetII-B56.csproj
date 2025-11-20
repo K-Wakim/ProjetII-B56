@@ -51,6 +51,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDB56Pr211DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmAjouterAbonnement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjouterAbonnement.Designer.cs">
+      <DependentUpon>frmAjouterAbonnement.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAjouterEmploye.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAjouterAbonnement.resx">
+      <DependentUpon>frmAjouterAbonnement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAjouterEmploye.resx">
       <DependentUpon>frmAjouterEmploye.cs</DependentUpon>
     </EmbeddedResource>

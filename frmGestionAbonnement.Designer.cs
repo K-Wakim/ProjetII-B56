@@ -244,6 +244,7 @@
             this.btnAjouterAbonne.TabIndex = 4;
             this.btnAjouterAbonne.Text = "Ajouter une abonné";
             this.btnAjouterAbonne.UseVisualStyleBackColor = true;
+            this.btnAjouterAbonne.Click += new System.EventHandler(this.btnAjouterAbonne_Click);
             // 
             // reabonnementsBindingSource
             // 

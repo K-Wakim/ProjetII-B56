@@ -41,10 +41,22 @@ namespace ProjetII_B56
 
         private void btnModifierEmploye_Click(object sender, EventArgs e)
         {
+            if (employesBindingSource.Current == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un employé.");
+                return;
+            }
+
+            DataRowView drv = (DataRowView)employesBindingSource.Current;
+            var row = (BDB56Pr211DataSet.EmployesRow)((DataRowView)drv).Row;
+
             this.Hide();
-            (new frmModifieEmploye()).ShowDialog();
+            var frm = new frmModifieEmploye(row);
+            frm.ShowDialog();
             this.Show();
         }
+
+
 
         private void btnRetour_Click(object sender, EventArgs e)
         {

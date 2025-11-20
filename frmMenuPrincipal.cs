@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace ProjetII_B56 {
     public partial class frmMenuPrincipal : Form {
-        public frmMenuPrincipal() {
-            InitializeComponent();
-        }
+        private BDB56Pr211DataSet.EmployesRow utilisateur;
 
-        private void frmMenuPrincipal_FormClosing( object sender, FormClosingEventArgs e ) {
-            Application.Exit();
+        public frmMenuPrincipal(BDB56Pr211DataSet.EmployesRow user)
+        {
+            InitializeComponent();
+            utilisateur = user;
         }
+         
+
+     
 
         private void btnGestionEmploye_Click(object sender, EventArgs e)
         {
@@ -80,5 +83,31 @@ namespace ProjetII_B56 {
             (new frmRapports()).ShowDialog();
             this.Show();
         }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            if (utilisateur.NoTypeEmploye != 1 && utilisateur.NoTypeEmploye != 2)
+            {
+                btnGestionEmploye.Enabled = false; // Désactive le bouton
+                btnGestionEmploye.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnGestionEmploye.Text += " (Accès restreint)";
+            }
+        }
+
+        private void btnDeconnection_Click(object sender, EventArgs e)
+        {
+            this.Close(); // Ferme cette fenêtre
+
+            // Ouvre la fenêtre de connexion
+            var frmConn = new frmConnection();
+            frmConn.Show();
+        }
+
+
+        private void btnSortie_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void frmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e) { Application.Exit(); }
     }
 }

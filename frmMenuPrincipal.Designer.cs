@@ -55,6 +55,7 @@
             this.btnSortie.TabIndex = 1;
             this.btnSortie.Text = "Quitter";
             this.btnSortie.UseVisualStyleBackColor = true;
+            this.btnSortie.Click += new System.EventHandler(this.btnSortie_Click);
             // 
             // btnDeconnection
             // 
@@ -64,6 +65,7 @@
             this.btnDeconnection.TabIndex = 2;
             this.btnDeconnection.Text = "Déconnecter";
             this.btnDeconnection.UseVisualStyleBackColor = true;
+            this.btnDeconnection.Click += new System.EventHandler(this.btnDeconnection_Click);
             // 
             // btnVisiRapports
             // 
@@ -175,6 +177,7 @@
             this.Name = "frmMenuPrincipal";
             this.Text = "frmMenuPrincipal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuPrincipal_FormClosing);
+            this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

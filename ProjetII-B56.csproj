@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -81,6 +81,18 @@
     <Compile Include="frmGestionReabonnement.Designer.cs">
       <DependentUpon>frmGestionReabonnement.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInscriptionDepense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInscriptionDepense.Designer.cs">
+      <DependentUpon>frmInscriptionDepense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInscriptionPartieGolfJouee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInscriptionPartieGolfJouee.Designer.cs">
+      <DependentUpon>frmInscriptionPartieGolfJouee.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,18 @@
     </Compile>
     <Compile Include="frmModifierPrixEtDepense.Designer.cs">
       <DependentUpon>frmModifierPrixEtDepense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRapports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRapports.Designer.cs">
+      <DependentUpon>frmRapports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStatisque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStatisque.Designer.cs">
+      <DependentUpon>frmStatisque.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

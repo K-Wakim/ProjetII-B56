@@ -111,6 +111,54 @@ namespace ProjetII_B56 {
                 btnGestionEmploye.BackColor = Color.LightGray; // Optionnel : griser le bouton
                 btnGestionEmploye.Text += " (Accès restreint)";
             }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 3 && user.NoTypeEmploye != 4)
+            {
+                btnAbonnement.Enabled = false; // Désactive le bouton
+                btnAbonnement.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnAbonnement.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 3 && user.NoTypeEmploye != 4)
+            {
+                btnReabonnement.Enabled = false; // Désactive le bouton
+                btnReabonnement.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnReabonnement.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 3 && user.NoTypeEmploye != 4)
+            {
+                btnMiseAJourAbonne.Enabled = false; // Désactive le bouton
+                btnMiseAJourAbonne.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnMiseAJourAbonne.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 2 && user.NoTypeEmploye != 3)
+            {
+                btnModPrix.Enabled = false; // Désactive le bouton
+                btnModPrix.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnModPrix.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 3 && user.NoTypeEmploye != 4)
+            {
+                btnInscGolfJouer.Enabled = false; // Désactive le bouton
+                btnInscGolfJouer.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnInscGolfJouer.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye == 4)
+            {
+                btnInscDepense.Enabled = false; // Désactive le bouton
+                btnInscDepense.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnInscDepense.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 2 && user.NoTypeEmploye != 3)
+            {
+                btnVisiRapports.Enabled = false; // Désactive le bouton
+                btnVisiRapports.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnVisiRapports.Text += " (Accès restreint)";
+            }
+            if (user.NoTypeEmploye != 1 && user.NoTypeEmploye != 2 && user.NoTypeEmploye != 3)
+            {
+                btnVisiStats.Enabled = false; // Désactive le bouton
+                btnVisiStats.BackColor = Color.LightGray; // Optionnel : griser le bouton
+                btnVisiStats.Text += " (Accès restreint)";
+            }
         }
 
 /*        private void btnDeconnection_Click(object sender, EventArgs e)

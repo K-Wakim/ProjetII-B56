@@ -29,14 +29,10 @@ namespace ProjetII_B56 {
             if (user != null)
             {
                 this.Hide();
-
-                // Passer la ligne de l'utilisateur au menu principal
-                var frmMenu = new frmMenuPrincipal(user);
-                frmMenu.Show();
-            }
-            else
-            {
-                lblStatusConnection.Text = "Connexion échouée";
+                (new frmMenuPrincipal()).ShowDialog();
+                this.Show();
+            } else {
+                lblStatusConnection.Text = "Connection échoué";
             }
         }
 
@@ -47,8 +43,7 @@ namespace ProjetII_B56 {
 
         }
 
-        private void btnQuitter_Click(object sender, EventArgs e)
-        {
+        private void btnQuitter_Click( object sender, EventArgs e ) {
             Application.Exit();
         }
     }

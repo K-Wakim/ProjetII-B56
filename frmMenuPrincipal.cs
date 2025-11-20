@@ -10,16 +10,30 @@ using System.Windows.Forms;
 
 namespace ProjetII_B56 {
     public partial class frmMenuPrincipal : Form {
-        private BDB56Pr211DataSet.EmployesRow utilisateur;
 
-        public frmMenuPrincipal(BDB56Pr211DataSet.EmployesRow user)
-        {
+        bool _Deconnect = false;
+        public frmMenuPrincipal() {
             InitializeComponent();
             utilisateur = user;
         }
          
 
-     
+        private void btnDeconnection_Click( object sender, EventArgs e ) {
+            _Deconnect = true;
+            this.Close();
+        }
+
+        private void frmMenuPrincipal_FormClosing( object sender, FormClosingEventArgs e ) {
+            if(_Deconnect) {
+                return;
+            } else {
+                Application.Exit();
+            }
+        }
+
+        private void btnSortie_Click( object sender, EventArgs e ) {
+            this.Close();
+        }
 
         private void btnGestionEmploye_Click(object sender, EventArgs e)
         {

@@ -75,6 +75,7 @@
             this.btnVisiRapports.TabIndex = 3;
             this.btnVisiRapports.Text = "Visualisation des rapports";
             this.btnVisiRapports.UseVisualStyleBackColor = true;
+            this.btnVisiRapports.Click += new System.EventHandler(this.btnVisiRapports_Click);
             // 
             // btnVisiStats
             // 
@@ -84,6 +85,7 @@
             this.btnVisiStats.TabIndex = 4;
             this.btnVisiStats.Text = "Visualisation des statisques";
             this.btnVisiStats.UseVisualStyleBackColor = true;
+            this.btnVisiStats.Click += new System.EventHandler(this.btnVisiStats_Click);
             // 
             // btnInscDepense
             // 
@@ -93,6 +95,7 @@
             this.btnInscDepense.TabIndex = 5;
             this.btnInscDepense.Text = "Inscription d\'une dépense";
             this.btnInscDepense.UseVisualStyleBackColor = true;
+            this.btnInscDepense.Click += new System.EventHandler(this.btnInscDepense_Click);
             // 
             // btnInscGolfJouer
             // 
@@ -102,6 +105,7 @@
             this.btnInscGolfJouer.TabIndex = 6;
             this.btnInscGolfJouer.Text = "Inscription d\'une partie de golf jouée";
             this.btnInscGolfJouer.UseVisualStyleBackColor = true;
+            this.btnInscGolfJouer.Click += new System.EventHandler(this.btnInscGolfJouer_Click);
             // 
             // btnModPrix
             // 
@@ -111,6 +115,7 @@
             this.btnModPrix.TabIndex = 7;
             this.btnModPrix.Text = "Modification des prix et des dépenses d\'abonnement";
             this.btnModPrix.UseVisualStyleBackColor = true;
+            this.btnModPrix.Click += new System.EventHandler(this.btnModPrix_Click);
             // 
             // btnMiseAJourAbonne
             // 
@@ -120,6 +125,7 @@
             this.btnMiseAJourAbonne.TabIndex = 8;
             this.btnMiseAJourAbonne.Text = "Mise à jour des abonnés";
             this.btnMiseAJourAbonne.UseVisualStyleBackColor = true;
+            this.btnMiseAJourAbonne.Click += new System.EventHandler(this.btnMiseAJourAbonne_Click);
             // 
             // btnReabonnement
             // 
@@ -129,6 +135,7 @@
             this.btnReabonnement.TabIndex = 9;
             this.btnReabonnement.Text = "Réabonnement";
             this.btnReabonnement.UseVisualStyleBackColor = true;
+            this.btnReabonnement.Click += new System.EventHandler(this.btnReabonnement_Click);
             // 
             // btnAbonnement
             // 
@@ -138,6 +145,7 @@
             this.btnAbonnement.TabIndex = 10;
             this.btnAbonnement.Text = "Abonnement";
             this.btnAbonnement.UseVisualStyleBackColor = true;
+            this.btnAbonnement.Click += new System.EventHandler(this.btnAbonnement_Click);
             // 
             // btnGestionEmploye
             // 
@@ -147,6 +155,7 @@
             this.btnGestionEmploye.TabIndex = 11;
             this.btnGestionEmploye.Text = "Gestion des employés";
             this.btnGestionEmploye.UseVisualStyleBackColor = true;
+            this.btnGestionEmploye.Click += new System.EventHandler(this.btnGestionEmploye_Click);
             // 
             // frmMenuPrincipal
             // 

@@ -32,5 +32,68 @@ namespace ProjetII_B56 {
         private void btnSortie_Click( object sender, EventArgs e ) {
             this.Close();
         }
+
+        private void btnGestionEmploye_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmGestionEmployes()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnAbonnement_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmGestionAbonnement()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnReabonnement_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmGestionReabonnement()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnMiseAJourAbonne_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmMiseAJourAbonnes()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnModPrix_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmModifierPrixEtDepense()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnInscGolfJouer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmInscriptionPartieGolfJouee()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnInscDepense_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmInscriptionDepense()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnVisiStats_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmStatisque()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnVisiRapports_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmRapports()).ShowDialog();
+            this.Show();
+        }
     }
 }

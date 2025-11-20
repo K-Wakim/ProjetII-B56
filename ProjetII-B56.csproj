@@ -146,6 +146,9 @@
     <EmbeddedResource Include="frmGestionReabonnement.resx">
       <DependentUpon>frmGestionReabonnement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInscriptionPartieGolfJouee.resx">
+      <DependentUpon>frmInscriptionPartieGolfJouee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

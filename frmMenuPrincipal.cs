@@ -43,7 +43,7 @@ namespace ProjetII_B56 {
         private void btnGestionEmploye_Click(object sender, EventArgs e)
         {
             this.Hide();
-            (new frmGestionEmployes()).ShowDialog();
+            (new frmGestionEmployes(user)).ShowDialog();
             this.Show();
         }
 

@@ -43,7 +43,53 @@ namespace ProjetII_B56
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            // Validation minimale
+            if (cboNomAbo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Veuillez sélectionner un abonné.");
+                return;
+            }
+            if (cboNomTerrain.SelectedIndex == -1)
+            {
+                MessageBox.Show("Veuillez sélectionner un terrain.");
+                return;
+            }
 
+            try
+            {
+                // Crée une nouvelle ligne PartieJouee
+                BDB56Pr211DataSet.PartiesJoueesRow nouvellePartie =
+                    bDB56Pr211DataSet.PartiesJouees.NewPartiesJoueesRow();
+
+                // Affectation des valeurs provenant du formulaire
+                nouvellePartie.IdAbonnement = Convert.ToString(cboNomAbo.SelectedValue);
+                nouvellePartie.NoTerrain = Convert.ToInt32(cboNomTerrain.SelectedValue);
+                nouvellePartie.Pointage = Convert.ToInt32(nudPointage.Value);
+                nouvellePartie.DatePartie = dtpPartieJoue.Value;
+
+                // Remarque est optionnel
+                if (!string.IsNullOrWhiteSpace(rtbRemarque.Text))
+                    nouvellePartie.Remarque = rtbRemarque.Text;
+                else
+                    nouvellePartie.SetRemarqueNull();  // obligatoire si colonne peut être NULL
+
+                // Ajouter la ligne au DataSet
+                bDB56Pr211DataSet.PartiesJouees.AddPartiesJoueesRow(nouvellePartie);
+
+                // Sauvegarder dans la BD
+                partiesJoueesTableAdapter.Update(bDB56Pr211DataSet.PartiesJouees);
+
+                MessageBox.Show("Partie enregistrée avec succès !");
+
+                // Optionnel : rafraîchir le formulaire
+                this.partiesJoueesTableAdapter.Fill(this.bDB56Pr211DataSet.PartiesJouees);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message);
+            }
         }
+
     }
 }

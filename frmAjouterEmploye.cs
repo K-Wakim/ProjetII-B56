@@ -184,6 +184,7 @@ namespace ProjetII_B56
                 empTA.Update(bDB56Pr211DataSet.Employes);
 
                 MessageBox.Show("Employé ajouté avec succès !");
+                this.empTA.Fill(this.bDB56Pr211DataSet.Employes);
                 this.Close();
             }
             catch (Exception ex)

@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDB56Pr211DataSet.cs">
+      <DependentUpon>BDB56Pr211DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BDB56Pr211DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +83,12 @@
     </Compile>
     <Compile Include="frmGestionReabonnement.Designer.cs">
       <DependentUpon>frmGestionReabonnement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInfoDepense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInfoDepense.Designer.cs">
+      <DependentUpon>frmInfoDepense.cs</DependentUpon>
     </Compile>
     <Compile Include="frmInscriptionDepense.cs">
       <SubType>Form</SubType>
@@ -145,6 +154,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGestionReabonnement.resx">
       <DependentUpon>frmGestionReabonnement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInfoDepense.resx">
+      <DependentUpon>frmInfoDepense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInscriptionDepense.resx">
+      <DependentUpon>frmInscriptionDepense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInscriptionPartieGolfJouee.resx">
       <DependentUpon>frmInscriptionPartieGolfJouee.cs</DependentUpon>

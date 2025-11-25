@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label nomLabel;
-            System.Windows.Forms.Label nomLabel1;
+            this.nomLabel = new System.Windows.Forms.Label();
+            this.nomLabel1 = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nudPointage = new System.Windows.Forms.NumericUpDown();
@@ -40,22 +40,38 @@
             this.terrainsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.terrainsTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TerrainsTableAdapter();
             this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
-            this.nomComboBox = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.fKPartiesJoueesTerrainsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partiesJoueesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.PartiesJoueesTableAdapter();
-            this.abonnementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.abonnementsTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.AbonnementsTableAdapter();
-            this.nomComboBox1 = new System.Windows.Forms.ComboBox();
+            this.partiesJoueesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.PartiesJoueesTableAdapter();
+            this.cboNomTerrain = new System.Windows.Forms.ComboBox();
+            this.dtpPartieJoue = new System.Windows.Forms.DateTimePicker();
+            this.fKPartiesJoueesTerrainsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.abonnementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboNomAbo = new System.Windows.Forms.ComboBox();
             this.btnEnregistrer = new System.Windows.Forms.Button();
-            nomLabel = new System.Windows.Forms.Label();
-            nomLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPointage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.terrainsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPartiesJoueesTerrainsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // nomLabel
+            // 
+            this.nomLabel.AutoSize = true;
+            this.nomLabel.Location = new System.Drawing.Point(26, 131);
+            this.nomLabel.Name = "nomLabel";
+            this.nomLabel.Size = new System.Drawing.Size(79, 13);
+            this.nomLabel.TabIndex = 21;
+            this.nomLabel.Text = "Nom du terrain:";
+            // 
+            // nomLabel1
+            // 
+            this.nomLabel1.AutoSize = true;
+            this.nomLabel1.Location = new System.Drawing.Point(26, 92);
+            this.nomLabel1.Name = "nomLabel1";
+            this.nomLabel1.Size = new System.Drawing.Size(90, 13);
+            this.nomLabel1.TabIndex = 23;
+            this.nomLabel1.Text = "Nom de l\'abonné:";
             // 
             // btnRetour
             // 
@@ -134,73 +150,55 @@
             this.tableAdapterManager.TypesEmployeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // nomLabel
+            // abonnementsTableAdapter
             // 
-            nomLabel.AutoSize = true;
-            nomLabel.Location = new System.Drawing.Point(26, 131);
-            nomLabel.Name = "nomLabel";
-            nomLabel.Size = new System.Drawing.Size(79, 13);
-            nomLabel.TabIndex = 21;
-            nomLabel.Text = "Nom du terrain:";
+            this.abonnementsTableAdapter.ClearBeforeFill = true;
             // 
-            // nomComboBox
+            // partiesJoueesTableAdapter
             // 
-            this.nomComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terrainsBindingSource, "Nom", true));
-            this.nomComboBox.DataSource = this.terrainsBindingSource;
-            this.nomComboBox.DisplayMember = "Nom";
-            this.nomComboBox.FormattingEnabled = true;
-            this.nomComboBox.Location = new System.Drawing.Point(142, 131);
-            this.nomComboBox.Name = "nomComboBox";
-            this.nomComboBox.Size = new System.Drawing.Size(121, 21);
-            this.nomComboBox.TabIndex = 22;
-            this.nomComboBox.ValueMember = "No";
+            this.partiesJoueesTableAdapter.ClearBeforeFill = true;
             // 
-            // dateTimePicker1
+            // cboNomTerrain
             // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(142, 213);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 23;
+            this.cboNomTerrain.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.terrainsBindingSource, "Nom", true));
+            this.cboNomTerrain.DataSource = this.terrainsBindingSource;
+            this.cboNomTerrain.DisplayMember = "Nom";
+            this.cboNomTerrain.FormattingEnabled = true;
+            this.cboNomTerrain.Location = new System.Drawing.Point(142, 131);
+            this.cboNomTerrain.Name = "cboNomTerrain";
+            this.cboNomTerrain.Size = new System.Drawing.Size(121, 21);
+            this.cboNomTerrain.TabIndex = 22;
+            this.cboNomTerrain.ValueMember = "No";
+            // 
+            // dtpPartieJoue
+            // 
+            this.dtpPartieJoue.Enabled = false;
+            this.dtpPartieJoue.Location = new System.Drawing.Point(142, 213);
+            this.dtpPartieJoue.Name = "dtpPartieJoue";
+            this.dtpPartieJoue.Size = new System.Drawing.Size(200, 20);
+            this.dtpPartieJoue.TabIndex = 23;
             // 
             // fKPartiesJoueesTerrainsBindingSource
             // 
             this.fKPartiesJoueesTerrainsBindingSource.DataMember = "FK_PartiesJouees_Terrains";
             this.fKPartiesJoueesTerrainsBindingSource.DataSource = this.terrainsBindingSource;
             // 
-            // partiesJoueesTableAdapter
-            // 
-            this.partiesJoueesTableAdapter.ClearBeforeFill = true;
-            // 
             // abonnementsBindingSource
             // 
             this.abonnementsBindingSource.DataMember = "Abonnements";
             this.abonnementsBindingSource.DataSource = this.bDB56Pr211DataSet;
             // 
-            // abonnementsTableAdapter
+            // cboNomAbo
             // 
-            this.abonnementsTableAdapter.ClearBeforeFill = true;
-            // 
-            // nomLabel1
-            // 
-            nomLabel1.AutoSize = true;
-            nomLabel1.Location = new System.Drawing.Point(26, 92);
-            nomLabel1.Name = "nomLabel1";
-            nomLabel1.Size = new System.Drawing.Size(90, 13);
-            nomLabel1.TabIndex = 23;
-            nomLabel1.Text = "Nom de l\'abonné:";
-            // 
-            // nomComboBox1
-            // 
-            this.nomComboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Nom", true));
-            this.nomComboBox1.DataSource = this.abonnementsBindingSource;
-            this.nomComboBox1.DisplayMember = "Nom";
-            this.nomComboBox1.FormattingEnabled = true;
-            this.nomComboBox1.Location = new System.Drawing.Point(142, 92);
-            this.nomComboBox1.Name = "nomComboBox1";
-            this.nomComboBox1.Size = new System.Drawing.Size(121, 21);
-            this.nomComboBox1.TabIndex = 24;
-            this.nomComboBox1.ValueMember = "Id";
+            this.cboNomAbo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Nom", true));
+            this.cboNomAbo.DataSource = this.abonnementsBindingSource;
+            this.cboNomAbo.DisplayMember = "Nom";
+            this.cboNomAbo.FormattingEnabled = true;
+            this.cboNomAbo.Location = new System.Drawing.Point(142, 92);
+            this.cboNomAbo.Name = "cboNomAbo";
+            this.cboNomAbo.Size = new System.Drawing.Size(121, 21);
+            this.cboNomAbo.TabIndex = 24;
+            this.cboNomAbo.ValueMember = "Id";
             // 
             // btnEnregistrer
             // 
@@ -218,11 +216,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 365);
             this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(nomLabel1);
-            this.Controls.Add(this.nomComboBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(nomLabel);
-            this.Controls.Add(this.nomComboBox);
+            this.Controls.Add(this.nomLabel1);
+            this.Controls.Add(this.cboNomAbo);
+            this.Controls.Add(this.dtpPartieJoue);
+            this.Controls.Add(this.nomLabel);
+            this.Controls.Add(this.cboNomTerrain);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nudPointage);
@@ -252,13 +250,15 @@
         private System.Windows.Forms.BindingSource terrainsBindingSource;
         private BDB56Pr211DataSetTableAdapters.TerrainsTableAdapter terrainsTableAdapter;
         private BDB56Pr211DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.ComboBox nomComboBox;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cboNomTerrain;
+        private System.Windows.Forms.DateTimePicker dtpPartieJoue;
         private BDB56Pr211DataSetTableAdapters.PartiesJoueesTableAdapter partiesJoueesTableAdapter;
         private System.Windows.Forms.BindingSource fKPartiesJoueesTerrainsBindingSource;
         private BDB56Pr211DataSetTableAdapters.AbonnementsTableAdapter abonnementsTableAdapter;
         private System.Windows.Forms.BindingSource abonnementsBindingSource;
-        private System.Windows.Forms.ComboBox nomComboBox1;
+        private System.Windows.Forms.ComboBox cboNomAbo;
         private System.Windows.Forms.Button btnEnregistrer;
+        private System.Windows.Forms.Label nomLabel;
+        private System.Windows.Forms.Label nomLabel1;
     }
 }

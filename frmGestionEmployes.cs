@@ -12,9 +12,12 @@ namespace ProjetII_B56
 {
     public partial class frmGestionEmployes : Form
     {
-        public frmGestionEmployes()
+        private BDB56Pr211DataSet.EmployesRow user;
+
+        public frmGestionEmployes(BDB56Pr211DataSet.EmployesRow user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void employesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -76,7 +79,16 @@ namespace ProjetII_B56
             int noEmploye = (int)drv["No"];
             string nom = drv["Nom"].ToString();
             string prenom = drv["Prenom"].ToString();
-
+            if (noEmploye ==1)
+            {
+                MessageBox.Show("Veuillez sélectionner un employé à supprimer qui n'est pas l'admin.");
+                return;
+            }
+            if(user.No == noEmploye)
+            {
+                MessageBox.Show("vous ne pouvez pas vous supprimez");
+                return;
+            }
             // Confirmation
             DialogResult rep = MessageBox.Show(
                 $"Voulez-vous vraiment supprimer l'employé :\n{prenom} {nom} (No {noEmploye}) ?",

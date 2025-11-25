@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDB56Pr211DataSet.cs">
+      <DependentUpon>BDB56Pr211DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BDB56Pr211DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1747,10 +1747,10 @@ namespace ProjetII_B56 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DepensesRow AddDepensesRow(int No, AbonnementsRow parentAbonnementsRowByFK__Depenses__IdAbon__6383C8BA, System.DateTime DateDepense, decimal Montant, ServicesRow parentServicesRowByFK__Depenses__NoServ__6477ECF3, string Remarque) {
+            public DepensesRow AddDepensesRow(AbonnementsRow parentAbonnementsRowByFK__Depenses__IdAbon__6383C8BA, System.DateTime DateDepense, decimal Montant, ServicesRow parentServicesRowByFK__Depenses__NoServ__6477ECF3, string Remarque) {
                 DepensesRow rowDepensesRow = ((DepensesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        No,
+                        null,
                         null,
                         DateDepense,
                         Montant,
@@ -1816,6 +1816,9 @@ namespace ProjetII_B56 {
                 base.Columns.Add(this.columnRemarque);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNo}, true));
+                this.columnNo.AutoIncrement = true;
+                this.columnNo.AutoIncrementSeed = -1;
+                this.columnNo.AutoIncrementStep = -1;
                 this.columnNo.AllowDBNull = false;
                 this.columnNo.Unique = true;
                 this.columnIdAbonnement.AllowDBNull = false;
@@ -5450,11 +5453,11 @@ namespace ProjetII_B56 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Remarque {
                 get {
-                    try {
-                        return ((string)(this[this.tableDepenses.RemarqueColumn]));
+                    if (this.IsRemarqueNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Remarque\' dans la table \'Depenses\' est DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableDepenses.RemarqueColumn]));
                     }
                 }
                 set {
@@ -8340,15 +8343,26 @@ SELECT Id, Nom, Prenom, Sexe, DateNaissance, IdAbonnement, Remarque FROM [56Poir
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoService", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoService", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [56Poirier].[Depenses] ([No], [IdAbonnement], [DateDepense], [Montant], [NoService], [Remarque]) VALUES (@No, @IdAbonnement, @DateDepense, @Montant, @NoService, @Remarque);
-SELECT No, IdAbonnement, DateDepense, Montant, NoService, Remarque FROM [56Poirier].Depenses WHERE (No = @No)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [56Poirier].[Depenses] 
+    ([IdAbonnement], [DateDepense], [Montant], [NoService], [Remarque]) 
+VALUES 
+    (@IdAbonnement, @DateDepense, @Montant, @NoService, @Remarque);
+
+SELECT No, IdAbonnement, DateDepense, Montant, NoService, Remarque 
+FROM [56Poirier].Depenses 
+WHERE (No = SCOPE_IDENTITY())
+; 
+SELECT No, IdAbonnement, DateDepense, Montant, NoService, Remarque 
+FROM [56Poirier].Depenses 
+WHERE (No = @No)
+";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@No", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdAbonnement", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IdAbonnement", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateDepense", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateDepense", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Montant", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Montant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoService", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoService", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remarque", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remarque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IdAbonnement", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "IdAbonnement", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateDepense", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "DateDepense", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Montant", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Montant", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NoService", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "NoService", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remarque", global::System.Data.SqlDbType.Text, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Remarque", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@No", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "No", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [56Poirier].[Depenses] SET [No] = @No, [IdAbonnement] = @IdAbonnement, [DateDepense] = @DateDepense, [Montant] = @Montant, [NoService] = @NoService, [Remarque] = @Remarque WHERE (([No] = @Original_No) AND ([IdAbonnement] = @Original_IdAbonnement) AND ([DateDepense] = @Original_DateDepense) AND ([Montant] = @Original_Montant) AND ([NoService] = @Original_NoService));
@@ -8473,23 +8487,28 @@ SELECT No, IdAbonnement, DateDepense, Montant, NoService, Remarque FROM [56Poiri
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int No, string IdAbonnement, System.DateTime DateDepense, decimal Montant, int NoService, string Remarque) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(No));
+        public virtual int Insert(string IdAbonnement, string DateDepense, decimal Montant, int NoService, string Remarque, int No) {
             if ((IdAbonnement == null)) {
                 throw new global::System.ArgumentNullException("IdAbonnement");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(IdAbonnement));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(IdAbonnement));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DateDepense));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Montant));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(NoService));
-            if ((Remarque == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            if ((DateDepense == null)) {
+                throw new global::System.ArgumentNullException("DateDepense");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Remarque));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(DateDepense));
             }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Montant));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(NoService));
+            if ((Remarque == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Remarque));
+            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(No));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

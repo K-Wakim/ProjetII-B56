@@ -85,7 +85,7 @@ namespace ProjetII_B56 {
         private void btnInscDepense_Click(object sender, EventArgs e)
         {
             this.Hide();
-            (new frmInscriptionDepense()).ShowDialog();
+            (new frmInscriptionDepense(user)).ShowDialog();
             this.Show();
         }
 

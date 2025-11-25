@@ -50,11 +50,13 @@
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.rtbRemarque = new System.Windows.Forms.RichTextBox();
+            this.bdB56Pr211DataSet1 = new ProjetII_B56.BDB56Pr211DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.nudPointage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.terrainsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPartiesJoueesTerrainsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdB56Pr211DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // nomLabel
@@ -81,7 +83,7 @@
             // 
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetour.Location = new System.Drawing.Point(475, 402);
-            this.btnRetour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(4);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(305, 32);
             this.btnRetour.TabIndex = 16;
@@ -103,7 +105,7 @@
             // nudPointage
             // 
             this.nudPointage.Location = new System.Drawing.Point(189, 201);
-            this.nudPointage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudPointage.Margin = new System.Windows.Forms.Padding(4);
             this.nudPointage.Name = "nudPointage";
             this.nudPointage.Size = new System.Drawing.Size(160, 22);
             this.nudPointage.TabIndex = 18;
@@ -174,7 +176,7 @@
             this.cboNomTerrain.DisplayMember = "Nom";
             this.cboNomTerrain.FormattingEnabled = true;
             this.cboNomTerrain.Location = new System.Drawing.Point(189, 161);
-            this.cboNomTerrain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNomTerrain.Margin = new System.Windows.Forms.Padding(4);
             this.cboNomTerrain.Name = "cboNomTerrain";
             this.cboNomTerrain.Size = new System.Drawing.Size(160, 24);
             this.cboNomTerrain.TabIndex = 22;
@@ -184,7 +186,7 @@
             // 
             this.dtpPartieJoue.Enabled = false;
             this.dtpPartieJoue.Location = new System.Drawing.Point(189, 262);
-            this.dtpPartieJoue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpPartieJoue.Margin = new System.Windows.Forms.Padding(4);
             this.dtpPartieJoue.Name = "dtpPartieJoue";
             this.dtpPartieJoue.Size = new System.Drawing.Size(265, 22);
             this.dtpPartieJoue.TabIndex = 23;
@@ -206,7 +208,7 @@
             this.cboNomAbo.DisplayMember = "Nom";
             this.cboNomAbo.FormattingEnabled = true;
             this.cboNomAbo.Location = new System.Drawing.Point(189, 113);
-            this.cboNomAbo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboNomAbo.Margin = new System.Windows.Forms.Padding(4);
             this.cboNomAbo.Name = "cboNomAbo";
             this.cboNomAbo.Size = new System.Drawing.Size(160, 24);
             this.cboNomAbo.TabIndex = 24;
@@ -215,7 +217,7 @@
             // btnEnregistrer
             // 
             this.btnEnregistrer.Location = new System.Drawing.Point(52, 402);
-            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnregistrer.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(203, 28);
             this.btnEnregistrer.TabIndex = 25;
@@ -240,6 +242,11 @@
             this.rtbRemarque.TabIndex = 27;
             this.rtbRemarque.Text = "";
             // 
+            // bdB56Pr211DataSet1
+            // 
+            this.bdB56Pr211DataSet1.DataSetName = "BDB56Pr211DataSet";
+            this.bdB56Pr211DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // frmInscriptionPartieGolfJouee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -258,7 +265,7 @@
             this.Controls.Add(this.nudPointage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRetour);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmInscriptionPartieGolfJouee";
             this.Text = "frmInscriptionPartieGolfJouee";
             this.Load += new System.EventHandler(this.frmInscriptionPartieGolfJouee_Load);
@@ -267,6 +274,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.terrainsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPartiesJoueesTerrainsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdB56Pr211DataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +303,6 @@
         private System.Windows.Forms.Label nomLabel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox rtbRemarque;
+        private BDB56Pr211DataSet bdB56Pr211DataSet1;
     }
 }

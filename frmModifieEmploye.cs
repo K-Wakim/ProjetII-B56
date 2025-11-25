@@ -141,6 +141,7 @@ namespace ProjetII_B56
 
 
                 MessageBox.Show("Employé modifié avec succès !");
+                this.empTA.Fill(this.bDB56Pr211DataSet.Employes);
                 this.Close();
             }
             catch (Exception ex)

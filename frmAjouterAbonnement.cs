@@ -34,7 +34,7 @@ namespace ProjetII_B56
             // TODO: cette ligne de code charge les données dans la table 'bDB56Pr211DataSet.TypesAbonnement'. Vous pouvez la déplacer ou la supprimer selon les besoins.
             this.typesAbonnementTableAdapter.Fill(this.bDB56Pr211DataSet.TypesAbonnement);
             // TODO: cette ligne de code charge les données dans la table 'bDB56Pr211DataSet.Abonnements'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.abonnementsTableAdapter.Fill(this.bDB56Pr211DataSet.Abonnements);
+            // this.abonnementsTableAdapter.Fill(this.bDB56Pr211DataSet.Abonnements);
 
         }
 
@@ -45,6 +45,27 @@ namespace ProjetII_B56
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            //  -------------------
+            //      VALIDATION
+            //  -------------------
+
+            // Whitespace or null checks
+
+            if (String.IsNullOrWhiteSpace(nomTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(prenomTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(sexeTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(villeTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(rueTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(noCiviqueTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(codePostalTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(telephoneTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(cellulaireTextBox.Text) == true ||
+                String.IsNullOrWhiteSpace(courrielTextBox.Text) == true)
+            {
+                MessageBox.Show("Veuillez remplir tout les champs!", "Erreur de validation!");
+            }
+
+            // Dates
 
         }
     }

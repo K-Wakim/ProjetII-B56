@@ -48,6 +48,8 @@
             this.abonnementsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.abonnementsTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.AbonnementsTableAdapter();
             this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
+            this.provincesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.ProvincesTableAdapter();
+            this.typesAbonnementTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TypesAbonnementTableAdapter();
             this.dateAbonnementDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.nomTextBox = new System.Windows.Forms.TextBox();
             this.prenomTextBox = new System.Windows.Forms.TextBox();
@@ -64,12 +66,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.noTypeAbonnementComboBox = new System.Windows.Forms.ComboBox();
             this.typesAbonnementBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.typesAbonnementTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TypesAbonnementTableAdapter();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.idProvinceComboBox = new System.Windows.Forms.ComboBox();
             this.provincesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.provincesTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.ProvincesTableAdapter();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             dateAbonnementLabel = new System.Windows.Forms.Label();
             nomLabel = new System.Windows.Forms.Label();
             prenomLabel = new System.Windows.Forms.Label();
@@ -89,7 +90,158 @@
             ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typesAbonnementBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.provincesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dateAbonnementLabel
+            // 
+            dateAbonnementLabel.AutoSize = true;
+            dateAbonnementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dateAbonnementLabel.Location = new System.Drawing.Point(117, 58);
+            dateAbonnementLabel.Name = "dateAbonnementLabel";
+            dateAbonnementLabel.Size = new System.Drawing.Size(118, 16);
+            dateAbonnementLabel.TabIndex = 3;
+            dateAbonnementLabel.Text = "Date Abonnement:";
+            // 
+            // nomLabel
+            // 
+            nomLabel.AutoSize = true;
+            nomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            nomLabel.Location = new System.Drawing.Point(117, 83);
+            nomLabel.Name = "nomLabel";
+            nomLabel.Size = new System.Drawing.Size(39, 16);
+            nomLabel.TabIndex = 5;
+            nomLabel.Text = "Nom:";
+            // 
+            // prenomLabel
+            // 
+            prenomLabel.AutoSize = true;
+            prenomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            prenomLabel.Location = new System.Drawing.Point(117, 109);
+            prenomLabel.Name = "prenomLabel";
+            prenomLabel.Size = new System.Drawing.Size(57, 16);
+            prenomLabel.TabIndex = 7;
+            prenomLabel.Text = "Prenom:";
+            // 
+            // sexeLabel
+            // 
+            sexeLabel.AutoSize = true;
+            sexeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            sexeLabel.Location = new System.Drawing.Point(117, 135);
+            sexeLabel.Name = "sexeLabel";
+            sexeLabel.Size = new System.Drawing.Size(41, 16);
+            sexeLabel.TabIndex = 9;
+            sexeLabel.Text = "Sexe:";
+            // 
+            // dateNaissanceLabel
+            // 
+            dateNaissanceLabel.AutoSize = true;
+            dateNaissanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dateNaissanceLabel.Location = new System.Drawing.Point(117, 162);
+            dateNaissanceLabel.Name = "dateNaissanceLabel";
+            dateNaissanceLabel.Size = new System.Drawing.Size(107, 16);
+            dateNaissanceLabel.TabIndex = 11;
+            dateNaissanceLabel.Text = "Date Naissance:";
+            // 
+            // noCiviqueLabel
+            // 
+            noCiviqueLabel.AutoSize = true;
+            noCiviqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            noCiviqueLabel.Location = new System.Drawing.Point(117, 187);
+            noCiviqueLabel.Name = "noCiviqueLabel";
+            noCiviqueLabel.Size = new System.Drawing.Size(76, 16);
+            noCiviqueLabel.TabIndex = 13;
+            noCiviqueLabel.Text = "No Civique:";
+            // 
+            // rueLabel
+            // 
+            rueLabel.AutoSize = true;
+            rueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            rueLabel.Location = new System.Drawing.Point(117, 213);
+            rueLabel.Name = "rueLabel";
+            rueLabel.Size = new System.Drawing.Size(35, 16);
+            rueLabel.TabIndex = 15;
+            rueLabel.Text = "Rue:";
+            // 
+            // villeLabel
+            // 
+            villeLabel.AutoSize = true;
+            villeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            villeLabel.Location = new System.Drawing.Point(115, 239);
+            villeLabel.Name = "villeLabel";
+            villeLabel.Size = new System.Drawing.Size(36, 16);
+            villeLabel.TabIndex = 17;
+            villeLabel.Text = "Ville:";
+            // 
+            // idProvinceLabel
+            // 
+            idProvinceLabel.AutoSize = true;
+            idProvinceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            idProvinceLabel.Location = new System.Drawing.Point(486, 55);
+            idProvinceLabel.Name = "idProvinceLabel";
+            idProvinceLabel.Size = new System.Drawing.Size(63, 16);
+            idProvinceLabel.TabIndex = 19;
+            idProvinceLabel.Text = "Province:";
+            // 
+            // codePostalLabel
+            // 
+            codePostalLabel.AutoSize = true;
+            codePostalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            codePostalLabel.Location = new System.Drawing.Point(486, 81);
+            codePostalLabel.Name = "codePostalLabel";
+            codePostalLabel.Size = new System.Drawing.Size(84, 16);
+            codePostalLabel.TabIndex = 21;
+            codePostalLabel.Text = "Code Postal:";
+            // 
+            // telephoneLabel
+            // 
+            telephoneLabel.AutoSize = true;
+            telephoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            telephoneLabel.Location = new System.Drawing.Point(486, 107);
+            telephoneLabel.Name = "telephoneLabel";
+            telephoneLabel.Size = new System.Drawing.Size(76, 16);
+            telephoneLabel.TabIndex = 23;
+            telephoneLabel.Text = "Telephone:";
+            // 
+            // cellulaireLabel
+            // 
+            cellulaireLabel.AutoSize = true;
+            cellulaireLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cellulaireLabel.Location = new System.Drawing.Point(486, 133);
+            cellulaireLabel.Name = "cellulaireLabel";
+            cellulaireLabel.Size = new System.Drawing.Size(66, 16);
+            cellulaireLabel.TabIndex = 25;
+            cellulaireLabel.Text = "Cellulaire:";
+            // 
+            // courrielLabel
+            // 
+            courrielLabel.AutoSize = true;
+            courrielLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            courrielLabel.Location = new System.Drawing.Point(486, 159);
+            courrielLabel.Name = "courrielLabel";
+            courrielLabel.Size = new System.Drawing.Size(56, 16);
+            courrielLabel.TabIndex = 27;
+            courrielLabel.Text = "Courriel:";
+            // 
+            // noTypeAbonnementLabel
+            // 
+            noTypeAbonnementLabel.AutoSize = true;
+            noTypeAbonnementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            noTypeAbonnementLabel.Location = new System.Drawing.Point(486, 185);
+            noTypeAbonnementLabel.Name = "noTypeAbonnementLabel";
+            noTypeAbonnementLabel.Size = new System.Drawing.Size(121, 16);
+            noTypeAbonnementLabel.TabIndex = 29;
+            noTypeAbonnementLabel.Text = "Type Abonnement:";
+            // 
+            // remarqueLabel
+            // 
+            remarqueLabel.AutoSize = true;
+            remarqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            remarqueLabel.Location = new System.Drawing.Point(486, 211);
+            remarqueLabel.Name = "remarqueLabel";
+            remarqueLabel.Size = new System.Drawing.Size(74, 16);
+            remarqueLabel.TabIndex = 31;
+            remarqueLabel.Text = "Remarque:";
             // 
             // bDB56Pr211DataSet
             // 
@@ -122,34 +274,23 @@
             this.tableAdapterManager.TypesEmployeTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // dateAbonnementLabel
+            // provincesTableAdapter
             // 
-            dateAbonnementLabel.AutoSize = true;
-            dateAbonnementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dateAbonnementLabel.Location = new System.Drawing.Point(117, 58);
-            dateAbonnementLabel.Name = "dateAbonnementLabel";
-            dateAbonnementLabel.Size = new System.Drawing.Size(118, 16);
-            dateAbonnementLabel.TabIndex = 3;
-            dateAbonnementLabel.Text = "Date Abonnement:";
+            this.provincesTableAdapter.ClearBeforeFill = true;
+            // 
+            // typesAbonnementTableAdapter
+            // 
+            this.typesAbonnementTableAdapter.ClearBeforeFill = true;
             // 
             // dateAbonnementDateTimePicker
             // 
             this.dateAbonnementDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.abonnementsBindingSource, "DateAbonnement", true));
+            this.dateAbonnementDateTimePicker.Enabled = false;
             this.dateAbonnementDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateAbonnementDateTimePicker.Location = new System.Drawing.Point(256, 54);
             this.dateAbonnementDateTimePicker.Name = "dateAbonnementDateTimePicker";
             this.dateAbonnementDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.dateAbonnementDateTimePicker.TabIndex = 4;
-            // 
-            // nomLabel
-            // 
-            nomLabel.AutoSize = true;
-            nomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nomLabel.Location = new System.Drawing.Point(117, 83);
-            nomLabel.Name = "nomLabel";
-            nomLabel.Size = new System.Drawing.Size(39, 16);
-            nomLabel.TabIndex = 5;
-            nomLabel.Text = "Nom:";
             // 
             // nomTextBox
             // 
@@ -160,16 +301,6 @@
             this.nomTextBox.Size = new System.Drawing.Size(200, 22);
             this.nomTextBox.TabIndex = 6;
             // 
-            // prenomLabel
-            // 
-            prenomLabel.AutoSize = true;
-            prenomLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            prenomLabel.Location = new System.Drawing.Point(117, 109);
-            prenomLabel.Name = "prenomLabel";
-            prenomLabel.Size = new System.Drawing.Size(57, 16);
-            prenomLabel.TabIndex = 7;
-            prenomLabel.Text = "Prenom:";
-            // 
             // prenomTextBox
             // 
             this.prenomTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Prenom", true));
@@ -178,16 +309,6 @@
             this.prenomTextBox.Name = "prenomTextBox";
             this.prenomTextBox.Size = new System.Drawing.Size(200, 22);
             this.prenomTextBox.TabIndex = 8;
-            // 
-            // sexeLabel
-            // 
-            sexeLabel.AutoSize = true;
-            sexeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            sexeLabel.Location = new System.Drawing.Point(117, 135);
-            sexeLabel.Name = "sexeLabel";
-            sexeLabel.Size = new System.Drawing.Size(41, 16);
-            sexeLabel.TabIndex = 9;
-            sexeLabel.Text = "Sexe:";
             // 
             // sexeTextBox
             // 
@@ -198,16 +319,6 @@
             this.sexeTextBox.Size = new System.Drawing.Size(200, 22);
             this.sexeTextBox.TabIndex = 10;
             // 
-            // dateNaissanceLabel
-            // 
-            dateNaissanceLabel.AutoSize = true;
-            dateNaissanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dateNaissanceLabel.Location = new System.Drawing.Point(117, 162);
-            dateNaissanceLabel.Name = "dateNaissanceLabel";
-            dateNaissanceLabel.Size = new System.Drawing.Size(107, 16);
-            dateNaissanceLabel.TabIndex = 11;
-            dateNaissanceLabel.Text = "Date Naissance:";
-            // 
             // dateNaissanceDateTimePicker
             // 
             this.dateNaissanceDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.abonnementsBindingSource, "DateNaissance", true));
@@ -216,16 +327,6 @@
             this.dateNaissanceDateTimePicker.Name = "dateNaissanceDateTimePicker";
             this.dateNaissanceDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.dateNaissanceDateTimePicker.TabIndex = 12;
-            // 
-            // noCiviqueLabel
-            // 
-            noCiviqueLabel.AutoSize = true;
-            noCiviqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            noCiviqueLabel.Location = new System.Drawing.Point(117, 187);
-            noCiviqueLabel.Name = "noCiviqueLabel";
-            noCiviqueLabel.Size = new System.Drawing.Size(76, 16);
-            noCiviqueLabel.TabIndex = 13;
-            noCiviqueLabel.Text = "No Civique:";
             // 
             // noCiviqueTextBox
             // 
@@ -236,16 +337,6 @@
             this.noCiviqueTextBox.Size = new System.Drawing.Size(200, 22);
             this.noCiviqueTextBox.TabIndex = 14;
             // 
-            // rueLabel
-            // 
-            rueLabel.AutoSize = true;
-            rueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            rueLabel.Location = new System.Drawing.Point(117, 213);
-            rueLabel.Name = "rueLabel";
-            rueLabel.Size = new System.Drawing.Size(35, 16);
-            rueLabel.TabIndex = 15;
-            rueLabel.Text = "Rue:";
-            // 
             // rueTextBox
             // 
             this.rueTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Rue", true));
@@ -254,16 +345,6 @@
             this.rueTextBox.Name = "rueTextBox";
             this.rueTextBox.Size = new System.Drawing.Size(200, 22);
             this.rueTextBox.TabIndex = 16;
-            // 
-            // villeLabel
-            // 
-            villeLabel.AutoSize = true;
-            villeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            villeLabel.Location = new System.Drawing.Point(115, 239);
-            villeLabel.Name = "villeLabel";
-            villeLabel.Size = new System.Drawing.Size(36, 16);
-            villeLabel.TabIndex = 17;
-            villeLabel.Text = "Ville:";
             // 
             // villeTextBox
             // 
@@ -274,26 +355,6 @@
             this.villeTextBox.Size = new System.Drawing.Size(200, 22);
             this.villeTextBox.TabIndex = 18;
             // 
-            // idProvinceLabel
-            // 
-            idProvinceLabel.AutoSize = true;
-            idProvinceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            idProvinceLabel.Location = new System.Drawing.Point(486, 55);
-            idProvinceLabel.Name = "idProvinceLabel";
-            idProvinceLabel.Size = new System.Drawing.Size(63, 16);
-            idProvinceLabel.TabIndex = 19;
-            idProvinceLabel.Text = "Province:";
-            // 
-            // codePostalLabel
-            // 
-            codePostalLabel.AutoSize = true;
-            codePostalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            codePostalLabel.Location = new System.Drawing.Point(486, 81);
-            codePostalLabel.Name = "codePostalLabel";
-            codePostalLabel.Size = new System.Drawing.Size(84, 16);
-            codePostalLabel.TabIndex = 21;
-            codePostalLabel.Text = "Code Postal:";
-            // 
             // codePostalTextBox
             // 
             this.codePostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "CodePostal", true));
@@ -302,16 +363,6 @@
             this.codePostalTextBox.Name = "codePostalTextBox";
             this.codePostalTextBox.Size = new System.Drawing.Size(200, 22);
             this.codePostalTextBox.TabIndex = 22;
-            // 
-            // telephoneLabel
-            // 
-            telephoneLabel.AutoSize = true;
-            telephoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            telephoneLabel.Location = new System.Drawing.Point(486, 107);
-            telephoneLabel.Name = "telephoneLabel";
-            telephoneLabel.Size = new System.Drawing.Size(76, 16);
-            telephoneLabel.TabIndex = 23;
-            telephoneLabel.Text = "Telephone:";
             // 
             // telephoneTextBox
             // 
@@ -322,16 +373,6 @@
             this.telephoneTextBox.Size = new System.Drawing.Size(200, 22);
             this.telephoneTextBox.TabIndex = 24;
             // 
-            // cellulaireLabel
-            // 
-            cellulaireLabel.AutoSize = true;
-            cellulaireLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            cellulaireLabel.Location = new System.Drawing.Point(486, 133);
-            cellulaireLabel.Name = "cellulaireLabel";
-            cellulaireLabel.Size = new System.Drawing.Size(66, 16);
-            cellulaireLabel.TabIndex = 25;
-            cellulaireLabel.Text = "Cellulaire:";
-            // 
             // cellulaireTextBox
             // 
             this.cellulaireTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Cellulaire", true));
@@ -341,16 +382,6 @@
             this.cellulaireTextBox.Size = new System.Drawing.Size(200, 22);
             this.cellulaireTextBox.TabIndex = 26;
             // 
-            // courrielLabel
-            // 
-            courrielLabel.AutoSize = true;
-            courrielLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            courrielLabel.Location = new System.Drawing.Point(486, 159);
-            courrielLabel.Name = "courrielLabel";
-            courrielLabel.Size = new System.Drawing.Size(56, 16);
-            courrielLabel.TabIndex = 27;
-            courrielLabel.Text = "Courriel:";
-            // 
             // courrielTextBox
             // 
             this.courrielTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.abonnementsBindingSource, "Courriel", true));
@@ -359,26 +390,6 @@
             this.courrielTextBox.Name = "courrielTextBox";
             this.courrielTextBox.Size = new System.Drawing.Size(200, 22);
             this.courrielTextBox.TabIndex = 28;
-            // 
-            // noTypeAbonnementLabel
-            // 
-            noTypeAbonnementLabel.AutoSize = true;
-            noTypeAbonnementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            noTypeAbonnementLabel.Location = new System.Drawing.Point(486, 185);
-            noTypeAbonnementLabel.Name = "noTypeAbonnementLabel";
-            noTypeAbonnementLabel.Size = new System.Drawing.Size(121, 16);
-            noTypeAbonnementLabel.TabIndex = 29;
-            noTypeAbonnementLabel.Text = "Type Abonnement:";
-            // 
-            // remarqueLabel
-            // 
-            remarqueLabel.AutoSize = true;
-            remarqueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            remarqueLabel.Location = new System.Drawing.Point(486, 211);
-            remarqueLabel.Name = "remarqueLabel";
-            remarqueLabel.Size = new System.Drawing.Size(74, 16);
-            remarqueLabel.TabIndex = 31;
-            remarqueLabel.Text = "Remarque:";
             // 
             // remarqueTextBox
             // 
@@ -417,10 +428,6 @@
             // 
             this.typesAbonnementBindingSource.DataMember = "TypesAbonnement";
             this.typesAbonnementBindingSource.DataSource = this.bDB56Pr211DataSet;
-            // 
-            // typesAbonnementTableAdapter
-            // 
-            this.typesAbonnementTableAdapter.ClearBeforeFill = true;
             // 
             // btnEnregistrer
             // 
@@ -463,9 +470,9 @@
             this.provincesBindingSource.DataMember = "Provinces";
             this.provincesBindingSource.DataSource = this.bDB56Pr211DataSet;
             // 
-            // provincesTableAdapter
+            // errorProvider
             // 
-            this.provincesTableAdapter.ClearBeforeFill = true;
+            this.errorProvider.ContainerControl = this;
             // 
             // frmAjouterAbonnement
             // 
@@ -512,6 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.abonnementsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typesAbonnementBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.provincesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,5 +553,6 @@
         private BDB56Pr211DataSetTableAdapters.ProvincesTableAdapter provincesTableAdapter;
         private System.Windows.Forms.ComboBox idProvinceComboBox;
         private System.Windows.Forms.BindingSource provincesBindingSource;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

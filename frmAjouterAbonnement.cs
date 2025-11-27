@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,30 +46,28 @@ namespace ProjetII_B56
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            //  -------------------
-            //      VALIDATION
-            //  -------------------
-
-            // Whitespace or null checks
-
-            if (String.IsNullOrWhiteSpace(nomTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(prenomTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(sexeTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(villeTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(rueTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(noCiviqueTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(codePostalTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(telephoneTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(cellulaireTextBox.Text) == true ||
-                String.IsNullOrWhiteSpace(courrielTextBox.Text) == true)
-            {
-                MessageBox.Show("Veuillez remplir tout les champs!", "Erreur de validation!");
-            }
-
-            
-
             try
             {
+                //  -------------------
+                //      VALIDATION
+                //  -------------------
+
+                // Whitespace or null checks
+
+                if (String.IsNullOrWhiteSpace(nomTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(prenomTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(sexeTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(villeTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(rueTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(noCiviqueTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(codePostalTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(telephoneTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(cellulaireTextBox.Text) == true ||
+                    String.IsNullOrWhiteSpace(courrielTextBox.Text) == true)
+                {
+                    throw new Exception("Veuillez remplir tout les champs!");
+                }
+
                 // Dates
 
                 if (dateAbonnementDateTimePicker.Value < dateNaissanceDateTimePicker.Value)
@@ -87,12 +86,47 @@ namespace ProjetII_B56
                     throw new Exception();
                 }
 
-                //Formatting
+                //Formatting (TODO LATER FOR THE TELEPHONE, CODEPOSTAL AND COURRIEL)
+
+                //Insertion of a new row (PRIORITY TODO)
+
+                int lien = (from abonnement in bDB56Pr211DataSet.Abonnements
+                            where abonnement.Nom == nomTextBox.Text
+                            select abonnement).Count() + 1;
+
+
+                string abonnementID = $"{nomTextBox.Text}{lien}P";
+
+                MessageBox.Show(abonnementID, "Testing");
+
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.connexion))
+                {
+                    //int lien = (from abonnement in bDB56Pr211DataSet.Abonnements
+                    //            where abonnement.Nom == nomTextBox.Text
+                    //            select abonnement).Count();
+
+                    
+                    //string abonnementID = $"{nomTextBox.Text}{lien}P";
+
+                    //MessageBox.Show(abonnementID, "Testing");
+
+                    //using (SqlCommand cmd = new SqlCommand($"INSERT INTO Abonnements" +
+                    //                                       $"(Id, DateAbonnement, Nom, Prenom, Sexe, DateNaissance, NoCivique, Rue, Ville, IdProvince, CodePostal, Telephone, Cellulaire, Courriel, NoTypeAbonnement, Remarque)" +
+                    //                                       $"VALUES ({})",
+                    //                                       conn))
+                    //{
+
+                    //}
+                }
+
 
             }
             catch (Exception ex)
             {
-
+                if (ex != null)
+                {
+                    MessageBox.Show(ex.Message, "Erreur dans la system!");
+                }
             }
 
         }

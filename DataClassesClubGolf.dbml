@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDB56Pr211" Class="DataClassesClubGolfDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Pr211;User ID=56Poirier" SettingsObjectName="ProjetII_B56.Properties.Settings" SettingsPropertyName="BDB56Pr211ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="[56Poirier].Abonnements" Member="Abonnements">
+    <Type Name="Abonnements">
+      <Column Name="Id" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateAbonnement" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexe" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateNaissance" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="NoCivique" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Rue" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Ville" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="IdProvince" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CodePostal" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Cellulaire" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Courriel" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="NoTypeAbonnement" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Abonnements_Dependants" Member="Dependants" ThisKey="Id" OtherKey="IdAbonnement" Type="Dependants" />
+      <Association Name="Abonnements_Depenses" Member="Depenses" ThisKey="Id" OtherKey="IdAbonnement" Type="Depenses" />
+      <Association Name="Abonnements_PartiesJouees" Member="PartiesJouees" ThisKey="Id" OtherKey="IdAbonnement" Type="PartiesJouees" />
+      <Association Name="Abonnements_Reabonnements" Member="Reabonnements" ThisKey="Id" OtherKey="IdAbonnement" Type="Reabonnements" Cardinality="One" />
+      <Association Name="Provinces_Abonnements" Member="Provinces" ThisKey="IdProvince" OtherKey="Id" Type="Provinces" IsForeignKey="true" />
+      <Association Name="TypesAbonnement_Abonnements" Member="TypesAbonnement" ThisKey="NoTypeAbonnement" OtherKey="No" Type="TypesAbonnement" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Dependants" Member="Dependants">
+    <Type Name="Dependants">
+      <Column Name="Id" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexe" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateNaissance" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="IdAbonnement" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Abonnements_Dependants" Member="Abonnements" ThisKey="IdAbonnement" OtherKey="Id" Type="Abonnements" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Depenses" Member="Depenses">
+    <Type Name="Depenses">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdAbonnement" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DateDepense" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Montant" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="NoService" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Abonnements_Depenses" Member="Abonnements" ThisKey="IdAbonnement" OtherKey="Id" Type="Abonnements" IsForeignKey="true" />
+      <Association Name="Services_Depenses" Member="Services" ThisKey="NoService" OtherKey="No" Type="Services" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Employes" Member="Employes">
+    <Type Name="Employes">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MotDePasse" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Prenom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexe" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NoCivique" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Rue" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Ville" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="IdProvince" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="CodePostal" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Telephone" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Cellulaire" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Courriel" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SalaireHoraire" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="NoTypeEmploye" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Employes_Services" Member="Services" ThisKey="No" OtherKey="NoEmploye" Type="Services" />
+      <Association Name="Provinces_Employes" Member="Provinces" ThisKey="IdProvince" OtherKey="Id" Type="Provinces" IsForeignKey="true" />
+      <Association Name="TypesEmploye_Employes" Member="TypesEmploye" ThisKey="NoTypeEmploye" OtherKey="No" Type="TypesEmploye" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].PartiesJouees" Member="PartiesJouees">
+    <Type Name="PartiesJouees">
+      <Column Name="IdAbonnement" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoTerrain" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DatePartie" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pointage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Abonnements_PartiesJouees" Member="Abonnements" ThisKey="IdAbonnement" OtherKey="Id" Type="Abonnements" IsForeignKey="true" />
+      <Association Name="Terrains_PartiesJouees" Member="Terrains" ThisKey="NoTerrain" OtherKey="No" Type="Terrains" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].PrixDepensesAbonnements" Member="PrixDepensesAbonnements">
+    <Type Name="PrixDepensesAbonnements">
+      <Column Name="NoTypeAbonnement" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Annee" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Prix" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="DepensesObligatoires" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TypesAbonnement_PrixDepensesAbonnements" Member="TypesAbonnement" ThisKey="NoTypeAbonnement" OtherKey="No" Type="TypesAbonnement" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Provinces" Member="Provinces">
+    <Type Name="Provinces">
+      <Column Name="Id" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Provinces_Employes" Member="Employes" ThisKey="Id" OtherKey="IdProvince" Type="Employes" />
+      <Association Name="Provinces_Abonnements" Member="Abonnements" ThisKey="Id" OtherKey="IdProvince" Type="Abonnements" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Reabonnements" Member="Reabonnements">
+    <Type Name="Reabonnements">
+      <Column Name="IdAbonnement" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateRenouvellement" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Abonnements_Reabonnements" Member="Abonnements" ThisKey="IdAbonnement" OtherKey="Id" Type="Abonnements" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Services" Member="Services">
+    <Type Name="Services">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TypeService" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NoEmploye" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Services_Depenses" Member="Depenses" ThisKey="No" OtherKey="NoService" Type="Depenses" />
+      <Association Name="Employes_Services" Member="Employes" ThisKey="NoEmploye" OtherKey="No" Type="Employes" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].Terrains" Member="Terrains">
+    <Type Name="Terrains">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nom" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreTrous" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Terrains_PartiesJouees" Member="PartiesJouees" ThisKey="No" OtherKey="NoTerrain" Type="PartiesJouees" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].TypesAbonnement" Member="TypesAbonnement">
+    <Type Name="TypesAbonnement">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TypesAbonnement_PrixDepensesAbonnements" Member="PrixDepensesAbonnements" ThisKey="No" OtherKey="NoTypeAbonnement" Type="PrixDepensesAbonnements" />
+      <Association Name="TypesAbonnement_Abonnements" Member="Abonnements" ThisKey="No" OtherKey="NoTypeAbonnement" Type="Abonnements" />
+    </Type>
+  </Table>
+  <Table Name="[56Poirier].TypesEmploye" Member="TypesEmploye">
+    <Type Name="TypesEmploye">
+      <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TypesEmploye_Employes" Member="Employes" ThisKey="No" OtherKey="NoTypeEmploye" Type="Employes" />
+    </Type>
+  </Table>
+</Database>

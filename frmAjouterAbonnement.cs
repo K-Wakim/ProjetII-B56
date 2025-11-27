@@ -65,7 +65,35 @@ namespace ProjetII_B56
                 MessageBox.Show("Veuillez remplir tout les champs!", "Erreur de validation!");
             }
 
-            // Dates
+            
+
+            try
+            {
+                // Dates
+
+                if (dateAbonnementDateTimePicker.Value < dateNaissanceDateTimePicker.Value)
+                {
+                    errorProvider.SetError(dateNaissanceDateTimePicker, "La date de naissance ne peux pas être avant la date de l'abonnement!");
+                    throw new Exception();
+                }
+                if ((dateAbonnementDateTimePicker.Value.Year - dateNaissanceDateTimePicker.Value.Year) < 18)
+                {
+                    errorProvider.SetError(dateNaissanceDateTimePicker, "L’âge minimum de l’abonné principal est de 18 ans!");
+                    throw new Exception();
+                }
+                if ((dateAbonnementDateTimePicker.Value.Year - dateNaissanceDateTimePicker.Value.Year) < 60 && Convert.ToInt64(noTypeAbonnementComboBox.SelectedValue) == 2)
+                {
+                    errorProvider.SetError(dateNaissanceDateTimePicker, "L’âge minimum de l’abonné principal est de 60 ans pour les personnes de l’âge d’or!");
+                    throw new Exception();
+                }
+
+                //Formatting
+
+            }
+            catch (Exception ex)
+            {
+
+            }
 
         }
     }

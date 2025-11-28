@@ -12,6 +12,8 @@ namespace ProjetII_B56
 {
     public partial class frmAjouterEmploye : Form
     {
+        DataClassesCclubGolfDataContext db = new DataClassesCclubGolfDataContext();
+
         public frmAjouterEmploye()
         {
             InitializeComponent();
@@ -33,8 +35,6 @@ namespace ProjetII_B56
 
         private void frmAjouterEmploye_Load(object sender, EventArgs e)
         {
-            this.employesTableAdapter.Fill(this.bDB56Pr211DataSet.Employes);
-
             // Sexe
             cboSexe.Items.Add("H");
             cboSexe.Items.Add("F");
@@ -43,22 +43,21 @@ namespace ProjetII_B56
             nudSalaire.Minimum = 15;
             nudSalaire.Maximum = 500;
 
-            //Age min/max
+            // Age min/max
             nudAge.Minimum = 16;
             nudAge.Maximum = 65;
 
             // Provinces
-            provincesTableAdapter.Fill(bDB56Pr211DataSet.Provinces);
-            cboProvince.DataSource = bDB56Pr211DataSet.Provinces;
+            cboProvince.DataSource = db.Provinces.ToList();
             cboProvince.DisplayMember = "Nom";
             cboProvince.ValueMember = "Id";
 
             // Types employé
-            typesEmployeTableAdapter.Fill(bDB56Pr211DataSet.TypesEmploye);
-            cboTypeEmploye.DataSource = bDB56Pr211DataSet.TypesEmploye;
+            cboTypeEmploye.DataSource = db.TypesEmploye.ToList();
             cboTypeEmploye.DisplayMember = "Description";
             cboTypeEmploye.ValueMember = "No";
         }
+
         private int GetNextEmployeeNumber()
         {
             if (bDB56Pr211DataSet.Employes.Rows.Count == 0)
@@ -122,11 +121,10 @@ namespace ProjetII_B56
         {
             if (!ValiderChamps()) return;
 
-            // Empêcher d'ajouter un admin
             int typeSelect = (int)cboTypeEmploye.SelectedValue;
-            string descType = bDB56Pr211DataSet.TypesEmploye.FindByNo(typeSelect).Description;
+            var typeEmp = db.TypesEmploye.Single(te => te.No == typeSelect);
 
-            if (descType.ToLower().Contains("admin"))
+            if (typeEmp.Description.ToLower().Contains("admin"))
             {
                 MessageBox.Show("Impossible d’ajouter un administrateur.");
                 return;
@@ -134,57 +132,36 @@ namespace ProjetII_B56
 
             try
             {
-                int nextNo = GetNextEmployeeNumber();
+                // Calculer le prochain No d'employé
+                int nextNo = db.Employes.Any() ? db.Employes.Max(emp => emp.No) + 1 : 1;
 
-                var newRow = bDB56Pr211DataSet.Employes.NewEmployesRow();
+                // Créer un nouvel objet Employe
+                Employes newEmp = new Employes
+                {
+                    No = nextNo,
+                    MotDePasse = txtMotDePasse.Text.Trim(),
+                    Nom = txtNom.Text.Trim(),
+                    Prenom = txtPrenom.Text.Trim(),
+                    Sexe = cboSexe.Text.Length > 0 ? cboSexe.Text[0] : 'H',
+                    Age = (int)nudAge.Value,
+                    NoCivique = txtNoCivique.Text.Trim(),
+                    Rue = txtRue.Text.Trim(),
+                    Ville = txtVille.Text.Trim(),
+                    IdProvince = cboProvince.SelectedValue.ToString(),
+                    CodePostal = txtCodePostal.Text.Replace(" ", ""),
+                    Telephone = txtTelephone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim(),
+                    Cellulaire = string.IsNullOrWhiteSpace(txtCellulaire.Text) ? null : txtCellulaire.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim(),
+                    Courriel = txtCourriel.Text.Trim(),
+                    SalaireHoraire = nudSalaire.Value,
+                    NoTypeEmploye = typeSelect,
+                    Remarque = string.IsNullOrWhiteSpace(txtRemarque.Text) ? null : txtRemarque.Text.Trim()
+                };
 
-                newRow.No = nextNo;
-                newRow.MotDePasse = txtMotDePasse.Text.Trim();
+                // Ajouter à la table et sauvegarder
+                db.Employes.InsertOnSubmit(newEmp);
+                db.SubmitChanges();
 
-                newRow.Nom = txtNom.Text.Trim();
-                newRow.Prenom = txtPrenom.Text.Trim();
-                newRow.Sexe = cboSexe.Text;
-
-                newRow.Age = (int)nudAge.Value;
-
-                // Adresse séparée
-                newRow.NoCivique = txtNoCivique.Text.Trim();
-                newRow.Rue = txtRue.Text.Trim();
-                newRow.Ville = txtVille.Text.Trim();
-
-                newRow.IdProvince = cboProvince.SelectedValue.ToString();
-                newRow.CodePostal = txtCodePostal.Text.Replace(" ", "");
-
-                newRow.Telephone = txtTelephone.Text
-                                   .Replace("(", "").Replace(")", "")
-                                   .Replace("-", "").Trim();
-
-                // Cellulaire optionnel
-                if (string.IsNullOrWhiteSpace(txtCellulaire.Text))
-                    newRow.SetCellulaireNull();
-                else
-                    newRow.Cellulaire = txtCellulaire.Text
-                                        .Replace("(", "").Replace(")", "")
-                                        .Replace("-", "").Trim();
-
-                newRow.Courriel = txtCourriel.Text.Trim();
-                newRow.SalaireHoraire = nudSalaire.Value;
-
-                newRow.NoTypeEmploye = typeSelect;
-
-                // Remarque optionnelle
-                if (string.IsNullOrWhiteSpace(txtRemarque.Text))
-                    newRow.SetRemarqueNull();
-                else
-                    newRow.Remarque = txtRemarque.Text.Trim();
-
-                // Ajouter ligne au dataset
-                bDB56Pr211DataSet.Employes.AddEmployesRow(newRow);
-
-                empTA.Update(bDB56Pr211DataSet.Employes);
-
-                MessageBox.Show("Employé ajouté avec succès !");
-                this.empTA.Fill(this.bDB56Pr211DataSet.Employes);
+                MessageBox.Show($"Employé ajouté avec succès !\nNuméro attribué : {newEmp.No}");
                 this.Close();
             }
             catch (Exception ex)
@@ -192,6 +169,8 @@ namespace ProjetII_B56
                 MessageBox.Show("Erreur : " + ex.Message);
             }
         }
+
+
         private void btnAjouter_Click(object sender, EventArgs e) { }
         private void textBox5_TextChanged(object sender, EventArgs e) { }
     }

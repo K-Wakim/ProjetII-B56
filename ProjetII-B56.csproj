@@ -191,6 +191,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Abonnements.datasource" />
     <None Include="BDB56Pr211DataSet.xsc">
       <DependentUpon>BDB56Pr211DataSet.xsd</DependentUpon>
     </None>
@@ -210,6 +211,11 @@
     <None Include="DataClassesCclubGolf.dbml.layout">
       <DependentUpon>DataClassesCclubGolf.dbml</DependentUpon>
     </None>
+    <None Include="Dependants.datasource" />
+    <None Include="Depenses.datasource" />
+    <None Include="Employes.datasource" />
+    <None Include="PartiesJouees.datasource" />
+    <None Include="PrixDepensesAbonnements.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -219,6 +225,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Provinces.datasource" />
+    <None Include="Reabonnements.datasource" />
+    <None Include="Services.datasource" />
+    <None Include="Terrains.datasource" />
+    <None Include="TypesAbonnement.datasource" />
+    <None Include="TypesEmploye.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

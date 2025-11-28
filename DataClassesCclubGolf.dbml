@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDB56Pr211" Class="DataClassesClubGolfDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Pr211;User ID=56Poirier" SettingsObjectName="ProjetII_B56.Properties.Settings" SettingsPropertyName="BDB56Pr211ConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDB56Pr211" Class="DataClassesCclubGolfDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=tcp:424sql.cgodin.qc.ca,5433;Initial Catalog=BDB56Pr211;Persist Security Info=True;User ID=56Poirier;Trust Server Certificate=True" SettingsObjectName="ProjetII_B56.Properties.Settings" SettingsPropertyName="BDB56Pr211ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="[56Poirier].Abonnements" Member="Abonnements">
     <Type Name="Abonnements">
       <Column Name="Id" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -22,8 +22,8 @@
       <Association Name="Abonnements_Depenses" Member="Depenses" ThisKey="Id" OtherKey="IdAbonnement" Type="Depenses" />
       <Association Name="Abonnements_PartiesJouees" Member="PartiesJouees" ThisKey="Id" OtherKey="IdAbonnement" Type="PartiesJouees" />
       <Association Name="Abonnements_Reabonnements" Member="Reabonnements" ThisKey="Id" OtherKey="IdAbonnement" Type="Reabonnements" Cardinality="One" />
-      <Association Name="Provinces_Abonnements" Member="Provinces" ThisKey="IdProvince" OtherKey="Id" Type="Provinces" IsForeignKey="true" />
       <Association Name="TypesAbonnement_Abonnements" Member="TypesAbonnement" ThisKey="NoTypeAbonnement" OtherKey="No" Type="TypesAbonnement" IsForeignKey="true" />
+      <Association Name="Provinces_Abonnements" Member="Provinces" ThisKey="IdProvince" OtherKey="Id" Type="Provinces" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="[56Poirier].Dependants" Member="Dependants">

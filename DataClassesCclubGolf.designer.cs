@@ -23,7 +23,7 @@ namespace ProjetII_B56
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BDB56Pr211")]
-	public partial class DataClassesClubGolfDataContext : System.Data.Linq.DataContext
+	public partial class DataClassesCclubGolfDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -68,31 +68,31 @@ namespace ProjetII_B56
     partial void DeleteTypesEmploye(TypesEmploye instance);
     #endregion
 		
-		public DataClassesClubGolfDataContext() : 
-				base(global::ProjetII_B56.Properties.Settings.Default.BDB56Pr211ConnectionString, mappingSource)
+		public DataClassesCclubGolfDataContext() : 
+				base(global::ProjetII_B56.Properties.Settings.Default.BDB56Pr211ConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClassesClubGolfDataContext(string connection) : 
+		public DataClassesCclubGolfDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClassesClubGolfDataContext(System.Data.IDbConnection connection) : 
+		public DataClassesCclubGolfDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClassesClubGolfDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClassesCclubGolfDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClassesClubGolfDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public DataClassesCclubGolfDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -241,9 +241,9 @@ namespace ProjetII_B56
 		
 		private EntityRef<Reabonnements> _Reabonnements;
 		
-		private EntityRef<Provinces> _Provinces;
-		
 		private EntityRef<TypesAbonnement> _TypesAbonnement;
+		
+		private EntityRef<Provinces> _Provinces;
 		
     #region Définitions de méthodes d'extensibilité
     partial void OnLoaded();
@@ -289,8 +289,8 @@ namespace ProjetII_B56
 			this._Depenses = new EntitySet<Depenses>(new Action<Depenses>(this.attach_Depenses), new Action<Depenses>(this.detach_Depenses));
 			this._PartiesJouees = new EntitySet<PartiesJouees>(new Action<PartiesJouees>(this.attach_PartiesJouees), new Action<PartiesJouees>(this.detach_PartiesJouees));
 			this._Reabonnements = default(EntityRef<Reabonnements>);
-			this._Provinces = default(EntityRef<Provinces>);
 			this._TypesAbonnement = default(EntityRef<TypesAbonnement>);
+			this._Provinces = default(EntityRef<Provinces>);
 			OnCreated();
 		}
 		
@@ -690,40 +690,6 @@ namespace ProjetII_B56
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Provinces_Abonnements", Storage="_Provinces", ThisKey="IdProvince", OtherKey="Id", IsForeignKey=true)]
-		public Provinces Provinces
-		{
-			get
-			{
-				return this._Provinces.Entity;
-			}
-			set
-			{
-				Provinces previousValue = this._Provinces.Entity;
-				if (((previousValue != value) 
-							|| (this._Provinces.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Provinces.Entity = null;
-						previousValue.Abonnements.Remove(this);
-					}
-					this._Provinces.Entity = value;
-					if ((value != null))
-					{
-						value.Abonnements.Add(this);
-						this._IdProvince = value.Id;
-					}
-					else
-					{
-						this._IdProvince = default(string);
-					}
-					this.SendPropertyChanged("Provinces");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TypesAbonnement_Abonnements", Storage="_TypesAbonnement", ThisKey="NoTypeAbonnement", OtherKey="No", IsForeignKey=true)]
 		public TypesAbonnement TypesAbonnement
 		{
@@ -754,6 +720,40 @@ namespace ProjetII_B56
 						this._NoTypeAbonnement = default(int);
 					}
 					this.SendPropertyChanged("TypesAbonnement");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Provinces_Abonnements", Storage="_Provinces", ThisKey="IdProvince", OtherKey="Id", IsForeignKey=true)]
+		public Provinces Provinces
+		{
+			get
+			{
+				return this._Provinces.Entity;
+			}
+			set
+			{
+				Provinces previousValue = this._Provinces.Entity;
+				if (((previousValue != value) 
+							|| (this._Provinces.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Provinces.Entity = null;
+						previousValue.Abonnements.Remove(this);
+					}
+					this._Provinces.Entity = value;
+					if ((value != null))
+					{
+						value.Abonnements.Add(this);
+						this._IdProvince = value.Id;
+					}
+					else
+					{
+						this._IdProvince = default(string);
+					}
+					this.SendPropertyChanged("Provinces");
 				}
 			}
 		}

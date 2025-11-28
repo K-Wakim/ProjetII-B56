@@ -12,14 +12,15 @@ namespace ProjetII_B56
 {
     public partial class frmModifieEmploye : Form
     {
-        private BDB56Pr211DataSet.EmployesRow employeRow;
+        DataClassesCclubGolfDataContext db = new DataClassesCclubGolfDataContext();
+        private Employes employe;
 
-
-        public frmModifieEmploye(BDB56Pr211DataSet.EmployesRow row)
+        public frmModifieEmploye(Employes emp)
         {
             InitializeComponent();
-            employeRow = row;
+            this.employe = emp;
         }
+
 
 
         BDB56Pr211DataSetTableAdapters.EmployesTableAdapter empTA = new BDB56Pr211DataSetTableAdapters.EmployesTableAdapter();
@@ -51,11 +52,6 @@ namespace ProjetII_B56
             cboProvince.DisplayMember = "Nom";
             cboProvince.ValueMember = "Id";
 
-            /*typesEmployeTableAdapter.Fill(bDB56Pr211DataSet.TypesEmploye);
-            cboTypeEmploye.DataSource = bDB56Pr211DataSet.TypesEmploye;
-            cboTypeEmploye.DisplayMember = "Description";
-            cboTypeEmploye.ValueMember = "No";*/
-
             // Sexe
             cboSexe.Items.Add("H");
             cboSexe.Items.Add("F");
@@ -69,27 +65,28 @@ namespace ProjetII_B56
             nudAge.Maximum = 65;
 
             // Pré-remplir les champs avec les données existantes
-            if (employeRow != null)
+            if (employe != null)
             {
-                txtNo.Text = employeRow["No"].ToString();
-                txtMotDePasse.Text = employeRow["MotDePasse"].ToString();
-                txtNom.Text = employeRow["Nom"].ToString();
-                txtPrenom.Text = employeRow["Prenom"].ToString();
-                cboSexe.Text = employeRow["Sexe"].ToString();
-                nudAge.Value = Convert.ToDecimal(employeRow["Age"]);
-                txtNoCivique.Text = employeRow["NoCivique"].ToString();
-                txtRue.Text = employeRow["Rue"].ToString();
-                txtVille.Text = employeRow["Ville"].ToString();
-                cboProvince.SelectedValue = employeRow["IdProvince"].ToString();
-                txtCodePostal.Text = employeRow["CodePostal"].ToString();
-                txtTelephone.Text = employeRow["Telephone"].ToString();
-                txtCellulaire.Text = employeRow["Cellulaire"]?.ToString();
-                txtCourriel.Text = employeRow["Courriel"].ToString();
-                nudSalaire.Value = Convert.ToDecimal(employeRow["SalaireHoraire"]);
-                cboTypeEmployes.SelectedValue = Convert.ToInt32(employeRow["NoTypeEmploye"]);
-                txtRemarque.Text = employeRow["Remarque"]?.ToString();
+                txtNo.Text = employe.No.ToString();
+                txtMotDePasse.Text = employe.MotDePasse;
+                txtNom.Text = employe.Nom;
+                txtPrenom.Text = employe.Prenom;
+                cboSexe.Text = employe.Sexe.ToString();
+                nudAge.Value = employe.Age;
+                txtNoCivique.Text = employe.NoCivique;
+                txtRue.Text = employe.Rue;
+                txtVille.Text = employe.Ville;
+                cboProvince.SelectedValue = employe.IdProvince;
+                txtCodePostal.Text = employe.CodePostal;
+                txtTelephone.Text = employe.Telephone;
+                txtCellulaire.Text = employe.Cellulaire;
+                txtCourriel.Text = employe.Courriel;
+                nudSalaire.Value = employe.SalaireHoraire;
+                cboTypeEmployes.SelectedValue = employe.NoTypeEmploye;
+                txtRemarque.Text = employe.Remarque;
             }
         }
+
 
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -103,45 +100,28 @@ namespace ProjetII_B56
 
             try
             {
-                // Utiliser directement la ligne passée dans le constructeur
-                var row = employeRow;
-
                 // Mettre à jour les champs
-                row.MotDePasse = txtMotDePasse.Text.Trim();
-                row.Nom = txtNom.Text.Trim();
-                row.Prenom = txtPrenom.Text.Trim();
-                row.Sexe = cboSexe.Text;
-                row.Age = (int)nudAge.Value;
+                employe.MotDePasse = txtMotDePasse.Text.Trim();
+                employe.Nom = txtNom.Text.Trim();
+                employe.Prenom = txtPrenom.Text.Trim();
+                employe.Sexe = cboSexe.Text.Length > 0 ? cboSexe.Text[0] : 'H';
+                employe.Age = (int)nudAge.Value;
+                employe.NoCivique = txtNoCivique.Text.Trim();
+                employe.Rue = txtRue.Text.Trim();
+                employe.Ville = txtVille.Text.Trim();
+                employe.IdProvince = (string)cboProvince.SelectedValue;
+                employe.CodePostal = txtCodePostal.Text.Replace(" ", "");
+                employe.Telephone = txtTelephone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim();
+                employe.Cellulaire = string.IsNullOrWhiteSpace(txtCellulaire.Text) ? null : txtCellulaire.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim();
+                employe.Courriel = txtCourriel.Text.Trim();
+                employe.SalaireHoraire = nudSalaire.Value;
+                //employe.NoTypeEmploye = (int)cboTypeEmployes.SelectedValue;
+                employe.Remarque = string.IsNullOrWhiteSpace(txtRemarque.Text) ? null : txtRemarque.Text.Trim();
 
-                row.NoCivique = txtNoCivique.Text.Trim();
-                row.Rue = txtRue.Text.Trim();
-                row.Ville = txtVille.Text.Trim();
-
-                row.IdProvince = cboProvince.SelectedValue.ToString();
-                row.CodePostal = txtCodePostal.Text.Replace(" ", "");
-
-                row.Telephone = txtTelephone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim();
-
-                if (string.IsNullOrWhiteSpace(txtCellulaire.Text))
-                    row.SetCellulaireNull();
-                else
-                    row.Cellulaire = txtCellulaire.Text.Replace("(", "").Replace(")", "").Replace("-", "").Trim();
-
-                row.Courriel = txtCourriel.Text.Trim();
-                row.SalaireHoraire = nudSalaire.Value;
-                //row.NoTypeEmploye = (int)cboTypeEmployes.SelectedValue;
-
-                if (string.IsNullOrWhiteSpace(txtRemarque.Text))
-                    row.SetRemarqueNull();
-                else
-                    row.Remarque = txtRemarque.Text.Trim();
-
-                // Sauvegarder les modifications
-                empTA.Update(employeRow);
+                db.SubmitChanges(); // Sauvegarde dans la base LINQ to SQL
 
 
                 MessageBox.Show("Employé modifié avec succès !");
-                this.empTA.Fill(this.bDB56Pr211DataSet.Employes);
                 this.Close();
             }
             catch (Exception ex)
@@ -149,6 +129,7 @@ namespace ProjetII_B56
                 MessageBox.Show("Erreur : " + ex.Message);
             }
         }
+
 
         private bool ValiderChamps()
         {

@@ -12,6 +12,9 @@ namespace ProjetII_B56
 {
     public partial class frmInscriptionPartieGolfJouee : Form
     {
+        DataClassesCclubGolfDataContext db = new DataClassesCclubGolfDataContext();
+
+
         public frmInscriptionPartieGolfJouee()
         {
             InitializeComponent();
@@ -32,18 +35,34 @@ namespace ProjetII_B56
 
         private void frmInscriptionPartieGolfJouee_Load(object sender, EventArgs e)
         {
-            // TODO: cette ligne de code charge les données dans la table 'bDB56Pr211DataSet.Abonnements'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.abonnementsTableAdapter.Fill(this.bDB56Pr211DataSet.Abonnements);
-            // TODO: cette ligne de code charge les données dans la table 'bDB56Pr211DataSet.PartiesJouees'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.partiesJoueesTableAdapter.Fill(this.bDB56Pr211DataSet.PartiesJouees);
-            // TODO: cette ligne de code charge les données dans la table 'bDB56Pr211DataSet.Terrains'. Vous pouvez la déplacer ou la supprimer selon les besoins.
-            this.terrainsTableAdapter.Fill(this.bDB56Pr211DataSet.Terrains);
+            // Charger les abonnements
+            var abonnements = db.Abonnements
+                                .Select(a => new
+                                {
+                                    a.Id,
+                                    NomComplet = a.Nom + " " + a.Prenom
+                                })
+                                .ToList();
+            cboNomAbo.DataSource = abonnements;
+            cboNomAbo.DisplayMember = "NomComplet";
+            cboNomAbo.ValueMember = "Id";
 
+            // Charger les terrains
+            var terrains = db.Terrains
+                             .Select(t => new
+                             {
+                                 t.No,
+                                 t.Nom
+                             })
+                             .ToList();
+            cboNomTerrain.DataSource = terrains;
+            cboNomTerrain.DisplayMember = "Nom";
+            cboNomTerrain.ValueMember = "No";
         }
+
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            // Validation minimale
             if (cboNomAbo.SelectedIndex == -1)
             {
                 MessageBox.Show("Veuillez sélectionner un abonné.");
@@ -57,32 +76,19 @@ namespace ProjetII_B56
 
             try
             {
-                // Crée une nouvelle ligne PartieJouee
-                BDB56Pr211DataSet.PartiesJoueesRow nouvellePartie =
-                    bDB56Pr211DataSet.PartiesJouees.NewPartiesJoueesRow();
+                PartiesJouees nouvellePartie = new PartiesJouees
+                {
+                    IdAbonnement = cboNomAbo.SelectedValue.ToString(),
+                    NoTerrain = (int)cboNomTerrain.SelectedValue,
+                    Pointage = (int)nudPointage.Value,
+                    DatePartie = dtpPartieJoue.Value,
+                    Remarque = string.IsNullOrWhiteSpace(rtbRemarque.Text) ? null : rtbRemarque.Text
+                };
 
-                // Affectation des valeurs provenant du formulaire
-                nouvellePartie.IdAbonnement = Convert.ToString(cboNomAbo.SelectedValue);
-                nouvellePartie.NoTerrain = Convert.ToInt32(cboNomTerrain.SelectedValue);
-                nouvellePartie.Pointage = Convert.ToInt32(nudPointage.Value);
-                nouvellePartie.DatePartie = dtpPartieJoue.Value;
-
-                // Remarque est optionnel
-                if (!string.IsNullOrWhiteSpace(rtbRemarque.Text))
-                    nouvellePartie.Remarque = rtbRemarque.Text;
-                else
-                    nouvellePartie.SetRemarqueNull();  // obligatoire si colonne peut être NULL
-
-                // Ajouter la ligne au DataSet
-                bDB56Pr211DataSet.PartiesJouees.AddPartiesJoueesRow(nouvellePartie);
-
-                // Sauvegarder dans la BD
-                partiesJoueesTableAdapter.Update(bDB56Pr211DataSet.PartiesJouees);
+                db.PartiesJouees.InsertOnSubmit(nouvellePartie);
+                db.SubmitChanges();
 
                 MessageBox.Show("Partie enregistrée avec succès !");
-
-                // Optionnel : rafraîchir le formulaire
-                this.partiesJoueesTableAdapter.Fill(this.bDB56Pr211DataSet.PartiesJouees);
                 this.Close();
             }
             catch (Exception ex)
@@ -90,6 +96,7 @@ namespace ProjetII_B56
                 MessageBox.Show("Erreur : " + ex.Message);
             }
         }
+
 
     }
 }

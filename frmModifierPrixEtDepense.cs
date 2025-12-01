@@ -44,73 +44,67 @@ namespace ProjetII_B56
                     if (row.IsNewRow) continue;
 
                     int noTypeAbonnement = Convert.ToInt32(row.Cells["NoTypeAbonnement"].Value);
-                    int annee = Convert.ToInt32(row.Cells["Annee"].Value);
+                    int oldYear = Convert.ToInt32(row.Cells["Annee"].Value);
 
                     decimal prix;
-                    decimal depensesObligatoires;
+                    decimal depenses;
 
-                    bool prixOk = decimal.TryParse(row.Cells["Prix"].Value?.ToString(), out prix);
-                    bool depenseOk = decimal.TryParse(row.Cells["DepensesObligatoires"].Value?.ToString(), out depensesObligatoires);
-
-                    if (!prixOk || prix < 0)
+                    if (!decimal.TryParse(row.Cells["Prix"].Value?.ToString(), out prix) || prix < 0)
                     {
-                        MessageBox.Show($"Prix invalide à la ligne {row.Index + 1}.");
-                        return;
-                    }
-                    if (!depenseOk || depensesObligatoires < 0)
-                    {
-                        MessageBox.Show($"Dépenses obligatoires invalides à la ligne {row.Index + 1}.");
+                        MessageBox.Show($"Prix invalide à la ligne {row.Index + 1}");
                         return;
                     }
 
-                    string remarque = row.Cells["Remarque"].Value?.ToString();
-
-                    // Récupérer l'enregistrement existant
-                    var record = db.PrixDepensesAbonnements
-                        .FirstOrDefault(p => p.NoTypeAbonnement == noTypeAbonnement && p.Annee == annee);
-
-                    if (record != null)
+                    if (!decimal.TryParse(row.Cells["DepensesObligatoires"].Value?.ToString(), out depenses) || depenses < 0)
                     {
-                        // Vérifier si l'utilisateur a modifié prix, dépense ou remarque
-                        bool isModified = record.Prix != prix || record.DepensesObligatoires != depensesObligatoires || record.Remarque != remarque;
-
-                        if (isModified)
-                        {
-                            var existsCurrentYear = db.PrixDepensesAbonnements
-                                .Any(p => p.NoTypeAbonnement == noTypeAbonnement && p.Annee == currentYear);
-
-                            if (existsCurrentYear)
-                            {
-                                MessageBox.Show($"Impossible de mettre à jour l'année pour l'abonnement {noTypeAbonnement} : ligne déjà existante pour {currentYear}.");
-                                continue;
-                            }
-
-                            string remarqueNonNull = remarque ?? "";
-
-                            db.ExecuteCommand(@"
-        UPDATE PrixDepensesAbonnements
-        SET Annee = {0},
-            Prix = {1},
-            DepensesObligatoires = {2},
-            Remarque = {3}
-        WHERE NoTypeAbonnement = {4} AND Annee = {5}",
-                                currentYear,
-                                prix,
-                                depensesObligatoires,
-                                remarqueNonNull,
-                                noTypeAbonnement,
-                                annee);
-                        }
-
-
+                        MessageBox.Show($"Dépenses obligatoires invalides à la ligne {row.Index + 1}");
+                        return;
                     }
-                    else
+
+                    string remarque = row.Cells["Remarque"].Value?.ToString() ?? "";
+
+                    // Récupérer l'ancien record
+                    var oldRecord = db.PrixDepensesAbonnements
+                        .FirstOrDefault(p => p.NoTypeAbonnement == noTypeAbonnement && p.Annee == oldYear);
+
+                    if (oldRecord == null)
                     {
-                        MessageBox.Show($"Type d'abonné {noTypeAbonnement} inexistant pour l'année {annee}.");
+                        MessageBox.Show($"Aucun enregistrement trouvé pour l'abonnement {noTypeAbonnement}");
+                        continue;
                     }
+
+                    bool modified =
+                        oldRecord.Prix != prix ||
+                        oldRecord.DepensesObligatoires != depenses ||
+                        (oldRecord.Remarque ?? "") != remarque;
+
+                    if (!modified) continue;
+
+                    // Vérifier si l'année courante existe déjà
+                    bool existsCurrentYear = db.PrixDepensesAbonnements
+                        .Any(p => p.NoTypeAbonnement == noTypeAbonnement && p.Annee == currentYear);
+
+                    if (existsCurrentYear)
+                    {
+                        MessageBox.Show($"Une ligne existe déjà pour {noTypeAbonnement} en {currentYear}.");
+                        continue;
+                    }
+
+                    // ➜ CRÉATION D'UN NOUVEL ENREGISTREMENT
+                    var newRecord = new PrixDepensesAbonnements
+                    {
+                        NoTypeAbonnement = noTypeAbonnement,
+                        Annee = currentYear,
+                        Prix = prix,
+                        DepensesObligatoires = depenses,
+                        Remarque = remarque
+                    };
+
+                    db.PrixDepensesAbonnements.InsertOnSubmit(newRecord);
                 }
 
-                MessageBox.Show("Modifications sauvegardées avec succès !");
+                db.SubmitChanges();
+                MessageBox.Show("Nouveaux enregistrements créés avec succès !");
                 frmModifierPrixEtDepense_Load(null, null);
             }
             catch (Exception ex)
@@ -118,6 +112,7 @@ namespace ProjetII_B56
                 MessageBox.Show("Erreur lors de la sauvegarde : " + ex.Message);
             }
         }
+
 
 
 
@@ -133,15 +128,20 @@ namespace ProjetII_B56
                     ta.Remarque
                 }).ToList();
 
-            var prixDepenseAboList = db.PrixDepensesAbonnements
-                .Select(pda => new PrixDepenseAboEditable
-                {
-                    NoTypeAbonnement = pda.NoTypeAbonnement,
-                    Annee = pda.Annee,
-                    Prix = pda.Prix,
-                    DepensesObligatoires = pda.DepensesObligatoires,
-                    Remarque = pda.Remarque
-                }).ToList();
+            var prixDepenseAboList =
+      db.PrixDepensesAbonnements
+      .GroupBy(p => p.NoTypeAbonnement)
+      .Select(g => g.OrderByDescending(p => p.Annee).First())
+      .Select(pda => new PrixDepenseAboEditable
+      {
+          NoTypeAbonnement = pda.NoTypeAbonnement,
+          Annee = pda.Annee,
+          Prix = pda.Prix,
+          DepensesObligatoires = pda.DepensesObligatoires,
+          Remarque = pda.Remarque
+      })
+      .ToList();
+
 
             BindingList<PrixDepenseAboEditable> bindingList = new BindingList<PrixDepenseAboEditable>(prixDepenseAboList);
 

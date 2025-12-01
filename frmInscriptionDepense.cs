@@ -133,7 +133,10 @@ namespace ProjetII_B56
                 if (abo != null)
                 {
                     var prix = db.PrixDepensesAbonnements
-                                .FirstOrDefault(p => p.NoTypeAbonnement == abo.NoTypeAbonnement);
+              .Where(p => p.NoTypeAbonnement == abo.NoTypeAbonnement)
+              .OrderByDescending(p => p.Annee)
+              .FirstOrDefault();
+
                     if (prix != null)
                         montantRestant = prix.DepensesObligatoires - totalDepenses;
                 }

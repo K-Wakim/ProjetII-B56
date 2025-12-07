@@ -51,6 +51,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.DepenseEmploye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).BeginInit();
@@ -77,6 +78,7 @@
             // DepenseEmploye
             // 
             this.DepenseEmploye.AutoScroll = true;
+            this.DepenseEmploye.Controls.Add(this.lblTitre);
             this.DepenseEmploye.Controls.Add(this.depenseParEmpDataGridView);
             this.DepenseEmploye.Controls.Add(this.lblEmploye);
             this.DepenseEmploye.Controls.Add(this.cbEmploye);
@@ -92,7 +94,7 @@
             // 
             this.lblEmploye.AutoSize = true;
             this.lblEmploye.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmploye.Location = new System.Drawing.Point(17, 13);
+            this.lblEmploye.Location = new System.Drawing.Point(7, 51);
             this.lblEmploye.Name = "lblEmploye";
             this.lblEmploye.Size = new System.Drawing.Size(104, 24);
             this.lblEmploye.TabIndex = 1;
@@ -101,7 +103,7 @@
             // cbEmploye
             // 
             this.cbEmploye.FormattingEnabled = true;
-            this.cbEmploye.Location = new System.Drawing.Point(127, 18);
+            this.cbEmploye.Location = new System.Drawing.Point(117, 56);
             this.cbEmploye.Name = "cbEmploye";
             this.cbEmploye.Size = new System.Drawing.Size(135, 21);
             this.cbEmploye.TabIndex = 0;
@@ -111,7 +113,7 @@
             this.DepenseAbonnement.Location = new System.Drawing.Point(4, 22);
             this.DepenseAbonnement.Name = "DepenseAbonnement";
             this.DepenseAbonnement.Padding = new System.Windows.Forms.Padding(3);
-            this.DepenseAbonnement.Size = new System.Drawing.Size(792, 423);
+            this.DepenseAbonnement.Size = new System.Drawing.Size(781, 423);
             this.DepenseAbonnement.TabIndex = 1;
             this.DepenseAbonnement.Text = "Dépenses par abonnement";
             this.DepenseAbonnement.UseVisualStyleBackColor = true;
@@ -121,7 +123,7 @@
             this.DepenseAnnee.Location = new System.Drawing.Point(4, 22);
             this.DepenseAnnee.Name = "DepenseAnnee";
             this.DepenseAnnee.Padding = new System.Windows.Forms.Padding(3);
-            this.DepenseAnnee.Size = new System.Drawing.Size(792, 423);
+            this.DepenseAnnee.Size = new System.Drawing.Size(781, 423);
             this.DepenseAnnee.TabIndex = 2;
             this.DepenseAnnee.Text = "Dépenses par année";
             this.DepenseAnnee.UseVisualStyleBackColor = true;
@@ -130,7 +132,7 @@
             // 
             this.PartiesParTerrain.Location = new System.Drawing.Point(4, 22);
             this.PartiesParTerrain.Name = "PartiesParTerrain";
-            this.PartiesParTerrain.Size = new System.Drawing.Size(792, 423);
+            this.PartiesParTerrain.Size = new System.Drawing.Size(781, 423);
             this.PartiesParTerrain.TabIndex = 3;
             this.PartiesParTerrain.Text = "Parties jouées par terrain";
             this.PartiesParTerrain.UseVisualStyleBackColor = true;
@@ -139,7 +141,7 @@
             // 
             this.PartiesParAbonnement.Location = new System.Drawing.Point(4, 22);
             this.PartiesParAbonnement.Name = "PartiesParAbonnement";
-            this.PartiesParAbonnement.Size = new System.Drawing.Size(792, 423);
+            this.PartiesParAbonnement.Size = new System.Drawing.Size(781, 423);
             this.PartiesParAbonnement.TabIndex = 4;
             this.PartiesParAbonnement.Text = "Parties jouées par abonnement";
             this.PartiesParAbonnement.UseVisualStyleBackColor = true;
@@ -148,7 +150,7 @@
             // 
             this.PartiesParAnnee.Location = new System.Drawing.Point(4, 22);
             this.PartiesParAnnee.Name = "PartiesParAnnee";
-            this.PartiesParAnnee.Size = new System.Drawing.Size(792, 423);
+            this.PartiesParAnnee.Size = new System.Drawing.Size(781, 423);
             this.PartiesParAnnee.TabIndex = 5;
             this.PartiesParAnnee.Text = "Parties jouées par année";
             this.PartiesParAnnee.UseVisualStyleBackColor = true;
@@ -215,11 +217,11 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn9});
             this.depenseParEmpDataGridView.DataSource = this.depenseParEmpBindingSource;
-            this.depenseParEmpDataGridView.Location = new System.Drawing.Point(6, 45);
+            this.depenseParEmpDataGridView.Location = new System.Drawing.Point(6, 83);
             this.depenseParEmpDataGridView.Name = "depenseParEmpDataGridView";
             this.depenseParEmpDataGridView.ReadOnly = true;
             this.depenseParEmpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.depenseParEmpDataGridView.Size = new System.Drawing.Size(769, 371);
+            this.depenseParEmpDataGridView.Size = new System.Drawing.Size(769, 333);
             this.depenseParEmpDataGridView.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn3
@@ -249,6 +251,16 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "Nom de l\'abonné";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // lblTitre
+            // 
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.Location = new System.Drawing.Point(204, 3);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(363, 37);
+            this.lblTitre.TabIndex = 3;
+            this.lblTitre.Text = "Dépenses par employé";
             // 
             // frmRapports
             // 
@@ -294,5 +306,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Label lblTitre;
     }
 }

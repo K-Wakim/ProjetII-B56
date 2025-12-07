@@ -99,6 +99,7 @@ namespace ProjetII_B56 {
             ///// DÉPENSES PAR ANNÉE /////
 
             nudAnnee.Maximum = DateTime.Now.Year;
+            nudAnnee.Value = DateTime.Now.Year;
 
             var depenseParAnnee = _context.Depenses
                 .Where( d => d.DateDepense.Year == Convert.ToInt32( nudAnnee.Value ) )
@@ -194,6 +195,7 @@ namespace ProjetII_B56 {
             ////// PARTIES JOUÉES PAR ANNÉE //////
             
             nudPartiesAnnee.Maximum = DateTime.Now.Year;
+            nudPartiesAnnee.Value = DateTime.Now.Year;
 
             var partiesParAnnee = _context.PartiesJouees
                 .Where( pj => pj.DatePartie.Year == Convert.ToInt32( nudPartiesAnnee.Value ) )
@@ -375,6 +377,10 @@ namespace ProjetII_B56 {
                 } );
 
             partiesParAnneeDataGridView.DataSource = partiesParAnnee.ToList();
+        }
+
+        private void btnRetour_Click( object sender, EventArgs e ) {
+            this.Close();
         }
     }
 }

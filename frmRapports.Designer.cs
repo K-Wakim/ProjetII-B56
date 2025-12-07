@@ -59,6 +59,8 @@
             this.partiesParAnneeDataGridView = new System.Windows.Forms.DataGridView();
             this.lblPartiesAnne = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblRapports = new System.Windows.Forms.Label();
+            this.btnRetour = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.DepenseEmploye.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.depenseParEmpDataGridView)).BeginInit();
@@ -84,7 +86,7 @@
             this.tabControl1.Controls.Add(this.PartiesParTerrain);
             this.tabControl1.Controls.Add(this.PartiesParAbonnement);
             this.tabControl1.Controls.Add(this.PartiesParAnnee);
-            this.tabControl1.Location = new System.Drawing.Point(2, 0);
+            this.tabControl1.Location = new System.Drawing.Point(2, 72);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(789, 449);
@@ -149,7 +151,7 @@
             this.DepenseAbonnement.Location = new System.Drawing.Point(4, 22);
             this.DepenseAbonnement.Name = "DepenseAbonnement";
             this.DepenseAbonnement.Padding = new System.Windows.Forms.Padding(3);
-            this.DepenseAbonnement.Size = new System.Drawing.Size(781, 423);
+            this.DepenseAbonnement.Size = new System.Drawing.Size(782, 422);
             this.DepenseAbonnement.TabIndex = 1;
             this.DepenseAbonnement.Text = "Dépenses par abonnement";
             this.DepenseAbonnement.UseVisualStyleBackColor = true;
@@ -163,7 +165,7 @@
             this.DepenseAnnee.Location = new System.Drawing.Point(4, 22);
             this.DepenseAnnee.Name = "DepenseAnnee";
             this.DepenseAnnee.Padding = new System.Windows.Forms.Padding(3);
-            this.DepenseAnnee.Size = new System.Drawing.Size(781, 423);
+            this.DepenseAnnee.Size = new System.Drawing.Size(782, 422);
             this.DepenseAnnee.TabIndex = 2;
             this.DepenseAnnee.Text = "Dépenses par année";
             this.DepenseAnnee.UseVisualStyleBackColor = true;
@@ -176,7 +178,7 @@
             this.PartiesParTerrain.Controls.Add(this.cbTerrain);
             this.PartiesParTerrain.Location = new System.Drawing.Point(4, 22);
             this.PartiesParTerrain.Name = "PartiesParTerrain";
-            this.PartiesParTerrain.Size = new System.Drawing.Size(781, 423);
+            this.PartiesParTerrain.Size = new System.Drawing.Size(782, 422);
             this.PartiesParTerrain.TabIndex = 3;
             this.PartiesParTerrain.Text = "Parties jouées par terrain";
             this.PartiesParTerrain.UseVisualStyleBackColor = true;
@@ -189,7 +191,7 @@
             this.PartiesParAbonnement.Controls.Add(this.cbPartieAbonne);
             this.PartiesParAbonnement.Location = new System.Drawing.Point(4, 22);
             this.PartiesParAbonnement.Name = "PartiesParAbonnement";
-            this.PartiesParAbonnement.Size = new System.Drawing.Size(781, 423);
+            this.PartiesParAbonnement.Size = new System.Drawing.Size(782, 422);
             this.PartiesParAbonnement.TabIndex = 4;
             this.PartiesParAbonnement.Text = "Parties jouées par abonnement";
             this.PartiesParAbonnement.UseVisualStyleBackColor = true;
@@ -202,7 +204,7 @@
             this.PartiesParAnnee.Controls.Add(this.label2);
             this.PartiesParAnnee.Location = new System.Drawing.Point(4, 22);
             this.PartiesParAnnee.Name = "PartiesParAnnee";
-            this.PartiesParAnnee.Size = new System.Drawing.Size(781, 423);
+            this.PartiesParAnnee.Size = new System.Drawing.Size(782, 422);
             this.PartiesParAnnee.TabIndex = 5;
             this.PartiesParAnnee.Text = "Parties jouées par année";
             this.PartiesParAnnee.UseVisualStyleBackColor = true;
@@ -464,11 +466,33 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Année:";
             // 
+            // lblRapports
+            // 
+            this.lblRapports.AutoSize = true;
+            this.lblRapports.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRapports.Location = new System.Drawing.Point(301, 9);
+            this.lblRapports.Name = "lblRapports";
+            this.lblRapports.Size = new System.Drawing.Size(155, 37);
+            this.lblRapports.TabIndex = 4;
+            this.lblRapports.Text = "Rapports";
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.Location = new System.Drawing.Point(686, 22);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(75, 23);
+            this.btnRetour.TabIndex = 5;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
             // frmRapports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 450);
+            this.ClientSize = new System.Drawing.Size(791, 521);
+            this.Controls.Add(this.btnRetour);
+            this.Controls.Add(this.lblRapports);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmRapports";
             this.Text = "Rapports";
@@ -494,6 +518,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPartiesAnnee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partiesParAnneeDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -530,5 +555,7 @@
         private System.Windows.Forms.DataGridView partiesParAnneeDataGridView;
         private System.Windows.Forms.Label lblPartiesAnne;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRapports;
+        private System.Windows.Forms.Button btnRetour;
     }
 }

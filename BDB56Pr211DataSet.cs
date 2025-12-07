@@ -1,9 +1,7 @@
-﻿namespace ProjetII_B56
-{
+﻿namespace ProjetII_B56 {
 
 
-    partial class BDB56Pr211DataSet
-    {
+    partial class BDB56Pr211DataSet {
     }
 }
 

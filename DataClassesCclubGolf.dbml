@@ -100,8 +100,8 @@
       <Column Name="Id" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Nom" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="Provinces_Employes" Member="Employes" ThisKey="Id" OtherKey="IdProvince" Type="Employes" />
       <Association Name="Provinces_Abonnements" Member="Abonnements" ThisKey="Id" OtherKey="IdProvince" Type="Abonnements" />
+      <Association Name="Provinces_Employes" Member="Employes" ThisKey="Id" OtherKey="IdProvince" Type="Employes" />
     </Type>
   </Table>
   <Table Name="[56Poirier].Reabonnements" Member="Reabonnements">
@@ -137,8 +137,8 @@
       <Column Name="No" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="Remarque" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="TypesAbonnement_PrixDepensesAbonnements" Member="PrixDepensesAbonnements" ThisKey="No" OtherKey="NoTypeAbonnement" Type="PrixDepensesAbonnements" />
       <Association Name="TypesAbonnement_Abonnements" Member="Abonnements" ThisKey="No" OtherKey="NoTypeAbonnement" Type="Abonnements" />
+      <Association Name="TypesAbonnement_PrixDepensesAbonnements" Member="PrixDepensesAbonnements" ThisKey="No" OtherKey="NoTypeAbonnement" Type="PrixDepensesAbonnements" />
     </Type>
   </Table>
   <Table Name="[56Poirier].TypesEmploye" Member="TypesEmploye">

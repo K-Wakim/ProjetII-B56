@@ -197,6 +197,12 @@
     <EmbeddedResource Include="frmModifierPrixEtDepense.resx">
       <DependentUpon>frmModifierPrixEtDepense.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRapports.resx">
+      <DependentUpon>frmRapports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStatisque.resx">
+      <DependentUpon>frmStatisque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

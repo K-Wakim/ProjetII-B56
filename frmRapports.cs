@@ -15,6 +15,19 @@ namespace ProjetII_B56
         public frmRapports()
         {
             InitializeComponent();
+
+            this.employesTableAdapter1.Fill( this.bDB56Pr211DataSet.Employes );
+
+            // Check if column doesn't already exist
+            if(!this.bDB56Pr211DataSet.Employes.Columns.Contains( "NomComplet" )) {
+                this.bDB56Pr211DataSet.Employes.Columns.Add( "NomComplet", typeof( string ), "Prenom + ' ' + Nom" );
+            }
+
+            cbEmploye.DataSource = this.bDB56Pr211DataSet.Employes;
+            cbEmploye.DisplayMember = "NomComplet";
+            cbEmploye.ValueMember = "No";
+
+            this.depenseParEmpTableAdapter.Fill( this.bDB56Pr211DataSet.DepenseParEmp, Convert.ToInt32(cbEmploye.SelectedValue) );
         }
     }
 }

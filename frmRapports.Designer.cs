@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.DepenseEmploye = new System.Windows.Forms.TabPage();
             this.lblEmploye = new System.Windows.Forms.Label();
@@ -38,26 +37,10 @@
             this.PartiesParTerrain = new System.Windows.Forms.TabPage();
             this.PartiesParAbonnement = new System.Windows.Forms.TabPage();
             this.PartiesParAnnee = new System.Windows.Forms.TabPage();
-            this.servicesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employesTableAdapter1 = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.EmployesTableAdapter();
-            this.servicesTableAdapter1 = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.ServicesTableAdapter();
-            this.bDB56Pr211DataSet = new ProjetII_B56.BDB56Pr211DataSet();
-            this.depenseParEmpBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.depenseParEmpTableAdapter = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.DepenseParEmpTableAdapter();
-            this.tableAdapterManager = new ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager();
             this.depenseParEmpDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitre = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.DepenseEmploye.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depenseParEmpBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depenseParEmpDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,6 +90,7 @@
             this.cbEmploye.Name = "cbEmploye";
             this.cbEmploye.Size = new System.Drawing.Size(135, 21);
             this.cbEmploye.TabIndex = 0;
+            this.cbEmploye.SelectedValueChanged += new System.EventHandler(this.cbEmploye_SelectedValueChanged);
             // 
             // DepenseAbonnement
             // 
@@ -155,102 +139,20 @@
             this.PartiesParAnnee.Text = "Parties jouées par année";
             this.PartiesParAnnee.UseVisualStyleBackColor = true;
             // 
-            // servicesBindingSource
-            // 
-            this.servicesBindingSource.DataSource = typeof(ProjetII_B56.Services);
-            // 
-            // employesBindingSource
-            // 
-            this.employesBindingSource.DataSource = typeof(ProjetII_B56.Employes);
-            // 
-            // employesTableAdapter1
-            // 
-            this.employesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // servicesTableAdapter1
-            // 
-            this.servicesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // bDB56Pr211DataSet
-            // 
-            this.bDB56Pr211DataSet.DataSetName = "BDB56Pr211DataSet";
-            this.bDB56Pr211DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // depenseParEmpBindingSource
-            // 
-            this.depenseParEmpBindingSource.DataMember = "DepenseParEmp";
-            this.depenseParEmpBindingSource.DataSource = this.bDB56Pr211DataSet;
-            // 
-            // depenseParEmpTableAdapter
-            // 
-            this.depenseParEmpTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.AbonnementsTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DependantsTableAdapter = null;
-            this.tableAdapterManager.DepensesTableAdapter = null;
-            this.tableAdapterManager.EmployesTableAdapter = this.employesTableAdapter1;
-            this.tableAdapterManager.PartiesJoueesTableAdapter = null;
-            this.tableAdapterManager.PrixDepensesAbonnementsTableAdapter = null;
-            this.tableAdapterManager.ProvincesTableAdapter = null;
-            this.tableAdapterManager.ReabonnementsTableAdapter = null;
-            this.tableAdapterManager.ServicesTableAdapter = this.servicesTableAdapter1;
-            this.tableAdapterManager.TerrainsTableAdapter = null;
-            this.tableAdapterManager.TypesAbonnementTableAdapter = null;
-            this.tableAdapterManager.TypesEmployeTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = ProjetII_B56.BDB56Pr211DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // depenseParEmpDataGridView
             // 
             this.depenseParEmpDataGridView.AllowUserToAddRows = false;
             this.depenseParEmpDataGridView.AllowUserToDeleteRows = false;
             this.depenseParEmpDataGridView.AllowUserToResizeColumns = false;
             this.depenseParEmpDataGridView.AllowUserToResizeRows = false;
-            this.depenseParEmpDataGridView.AutoGenerateColumns = false;
             this.depenseParEmpDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.depenseParEmpDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.depenseParEmpDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn9});
-            this.depenseParEmpDataGridView.DataSource = this.depenseParEmpBindingSource;
             this.depenseParEmpDataGridView.Location = new System.Drawing.Point(6, 83);
             this.depenseParEmpDataGridView.Name = "depenseParEmpDataGridView";
             this.depenseParEmpDataGridView.ReadOnly = true;
             this.depenseParEmpDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.depenseParEmpDataGridView.Size = new System.Drawing.Size(769, 333);
             this.depenseParEmpDataGridView.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TypeService";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Type de service";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Montant";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Montant";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "DateDepense";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Date de la dépense";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "NomComplet";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Nom de l\'abonné";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
             // lblTitre
             // 
@@ -273,10 +175,6 @@
             this.tabControl1.ResumeLayout(false);
             this.DepenseEmploye.ResumeLayout(false);
             this.DepenseEmploye.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.servicesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDB56Pr211DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.depenseParEmpBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.depenseParEmpDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -291,21 +189,9 @@
         private System.Windows.Forms.TabPage PartiesParTerrain;
         private System.Windows.Forms.TabPage PartiesParAbonnement;
         private System.Windows.Forms.TabPage PartiesParAnnee;
-        private System.Windows.Forms.BindingSource servicesBindingSource;
         private System.Windows.Forms.Label lblEmploye;
         private System.Windows.Forms.ComboBox cbEmploye;
-        private BDB56Pr211DataSetTableAdapters.EmployesTableAdapter employesTableAdapter1;
-        private System.Windows.Forms.BindingSource employesBindingSource;
-        private BDB56Pr211DataSetTableAdapters.ServicesTableAdapter servicesTableAdapter1;
-        private BDB56Pr211DataSet bDB56Pr211DataSet;
-        private System.Windows.Forms.BindingSource depenseParEmpBindingSource;
-        private BDB56Pr211DataSetTableAdapters.DepenseParEmpTableAdapter depenseParEmpTableAdapter;
-        private BDB56Pr211DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView depenseParEmpDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label lblTitre;
     }
 }

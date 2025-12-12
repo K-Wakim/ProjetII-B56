@@ -33,5 +33,22 @@ namespace ProjetII_B56
             this.abonnementsTableAdapter.Fill(this.bDB56Pr211DataSet.Abonnements);
 
         }
+
+        private void btnAjouterAbonne_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new frmAjouterAbonnement()).ShowDialog();
+            this.Show();
+        }
+
+        private void btnReinitialiser_Click(object sender, EventArgs e)
+        {
+            frmGestionAbonnement_Load(sender, e);
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

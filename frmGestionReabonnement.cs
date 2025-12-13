@@ -92,21 +92,21 @@ namespace ProjetII_B56
                     //                                .Count(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString() && r.DateRenouvellement.Year == DateTime.Now.Year);
 
                     var existingReabonnement = db.Reabonnements
-                                              .FirstOrDefault(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString() && r.DateRenouvellement.Year == DateTime.Now.Year);
+                                              .FirstOrDefault(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString());
 
                     if (existingReabonnement == null)
                     {
                         var reabonnement = new Reabonnements
                         {
-                            DateRenouvellement = DateTime.Now,
+                            DateRenouvellement = new DateTime(DateTime.Now.Year, 1, 1),
                             IdAbonnement = selectedRow.Cells[0].Value.ToString(),
                             Remarque = "Renouvellement automatique"
                         };
 
                         db.Reabonnements.InsertOnSubmit(reabonnement);
                         db.SubmitChanges();
-                        MessageBox.Show("Réabonnemeent est rénouvellé avec success!");
-                        frmGestionReabonnement_Load(sender, e);
+                        MessageBox.Show("Réabonnemeent est ajouter avec success!");
+                        reabonnementsBindingSource.DataSource = db.Reabonnements;
                     }
                     else if (existingReabonnement.DateRenouvellement.Year == DateTime.Now.Year + 1)
                     {
@@ -118,22 +118,16 @@ namespace ProjetII_B56
 
                         if (reabonnement != null)
                         {
-                            reabonnement.DateRenouvellement = DateTime.Now;
+                            reabonnement.DateRenouvellement = reabonnement.DateRenouvellement.Month == 1 && reabonnement.DateRenouvellement.Day == 1 ? DateTime.Now : new DateTime((DateTime.Now.Year + 1), 1, 1);
                             reabonnement.Remarque = "Renouvellement automatique";
                             db.SubmitChanges();
                             MessageBox.Show("Réabonnemeent est rénouvellé avec success!");
-                            frmGestionReabonnement_Load(sender, e);
+                            reabonnementsBindingSource.DataSource = db.Reabonnements;
                         }
                         else
                         {
                             throw new Exception("Abonnement non trouvé.");
-                        }
-
-
-                        reabonnement.Remarque = txtRemarque.Text;
-                        db.SubmitChanges();
-
-                        MessageBox.Show("Abonnement renouvellé avec succès!");
+                        }              
                     }
 
 
@@ -158,6 +152,7 @@ namespace ProjetII_B56
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erreur lors du renouvellement de l'abonnement: " + ex.Message);
+                    return;
                 }
 
 

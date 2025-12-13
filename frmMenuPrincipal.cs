@@ -49,6 +49,7 @@ namespace ProjetII_B56 {
 
         private void btnAbonnement_Click(object sender, EventArgs e)
         {
+            // Si une exception est levée, relancer l'application
             this.Hide();
             (new frmGestionAbonnement()).ShowDialog();
             this.Show();

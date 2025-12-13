@@ -88,17 +88,70 @@ namespace ProjetII_B56
                 {
                     DataGridViewRow selectedRow = abonnementsDataGridView.SelectedRows[0];
 
-                    var reabonnement = new Reabonnements
+                    //var countReabonnementThisYear = db.Reabonnements
+                    //                                .Count(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString() && r.DateRenouvellement.Year == DateTime.Now.Year);
+
+                    var existingReabonnement = db.Reabonnements
+                                              .FirstOrDefault(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString() && r.DateRenouvellement.Year == DateTime.Now.Year);
+
+                    if (existingReabonnement == null)
                     {
-                        DateRenouvellement = DateTime.Now,
-                        IdAbonnement = selectedRow.Cells[0].Value.ToString(),
-                        Remarque = "Renouvellement automatique"
-                    };
+                        var reabonnement = new Reabonnements
+                        {
+                            DateRenouvellement = DateTime.Now,
+                            IdAbonnement = selectedRow.Cells[0].Value.ToString(),
+                            Remarque = "Renouvellement automatique"
+                        };
 
-                    db.Reabonnements.InsertOnSubmit(reabonnement);
-                    db.SubmitChanges();
+                        db.Reabonnements.InsertOnSubmit(reabonnement);
+                        db.SubmitChanges();
+                        MessageBox.Show("Réabonnemeent est rénouvellé avec success!");
+                        frmGestionReabonnement_Load(sender, e);
+                    }
+                    else if (existingReabonnement.DateRenouvellement.Year == DateTime.Now.Year + 1)
+                    {
+                        throw new Exception("L'abonnement peut seulement être rénouvellé deux fois par année");
+                    }
+                    else
+                    {
+                        var reabonnement = db.Reabonnements.SingleOrDefault(r => r.IdAbonnement == selectedRow.Cells[0].Value.ToString());
 
-                    MessageBox.Show("Abonnement renouvellé avec succès!");
+                        if (reabonnement != null)
+                        {
+                            reabonnement.DateRenouvellement = DateTime.Now;
+                            reabonnement.Remarque = "Renouvellement automatique";
+                            db.SubmitChanges();
+                            MessageBox.Show("Réabonnemeent est rénouvellé avec success!");
+                            frmGestionReabonnement_Load(sender, e);
+                        }
+                        else
+                        {
+                            throw new Exception("Abonnement non trouvé.");
+                        }
+
+
+                        reabonnement.Remarque = txtRemarque.Text;
+                        db.SubmitChanges();
+
+                        MessageBox.Show("Abonnement renouvellé avec succès!");
+                    }
+
+
+                    //string DEBUG = "";
+
+                    //for (int i = 0; i < selectedRow.Cells.Count; i++)
+                    //{
+                    //    if (selectedRow.Cells[i].Value == null)
+                    //    {
+                    //        DEBUG += $"Index {i} is null \n";
+                    //    }
+                    //    else
+                    //    {
+                    //        DEBUG += $"Index {i}: {selectedRow.Cells[i].Value.ToString()} \n";
+                    //    }
+                    //}
+
+                    //MessageBox.Show(DEBUG);
 
                     frmGestionReabonnement_Load(sender, e);
                 }

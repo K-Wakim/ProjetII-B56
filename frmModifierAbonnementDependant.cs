@@ -148,21 +148,21 @@ namespace ProjetII_B56
 
                             // Charger les valeurs des champs depuis selectedRow
 
-                            string DEBUG = "";
+                            //string DEBUG = "";
 
-                            for (int i = 0; i < selectedRow.Cells.Count; i++)
-                            {
-                                if (selectedRow.Cells[i].Value == null)
-                                {
-                                    DEBUG += $"Index {i} is null \n";
-                                }
-                                else
-                                {
-                                    DEBUG += $"Index {i}: {selectedRow.Cells[i].Value.ToString()} \n";
-                                }
-                            }
+                            //for (int i = 0; i < selectedRow.Cells.Count; i++)
+                            //{
+                            //    if (selectedRow.Cells[i].Value == null)
+                            //    {
+                            //        DEBUG += $"Index {i} is null \n";
+                            //    }
+                            //    else
+                            //    {
+                            //        DEBUG += $"Index {i}: {selectedRow.Cells[i].Value.ToString()} \n";
+                            //    }
+                            //}
 
-                            MessageBox.Show(DEBUG);
+                            // MessageBox.Show(DEBUG);
 
                             // Charger les valeurs des champs depuis selectedRow
 
